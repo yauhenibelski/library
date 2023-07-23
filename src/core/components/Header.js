@@ -16,18 +16,23 @@ class Header extends Component {
     const headline = createElement({ tagName: 'h1', text: Header.textObject.headline });
     const navWrapper = createElement({ tagName: 'div', className: 'nav_wrapper' });
     const nav = createElement({ tagName: 'nav' });
+    const ul = createElement({ tagName: 'ul' });
     const profileButton = createElement({ tagName: 'button', className: 'profile-btn' });
 
     Header.textObject.nLink.forEach((linkName) => {
+      const li = createElement({ tagName: 'li' });
       const link = createElement({ tagName: 'a', text: linkName });
       link.href = `#${linkName.toLocaleLowerCase()}`;
-      nav.append(link);
+      li.append(link);
+      ul.append(li);
     });
 
     profileButton.append(App.profileIcon);
 
     section.append(headline);
     section.append(navWrapper);
+
+    nav.append(ul);
 
     navWrapper.append(nav);
     navWrapper.append(profileButton);
