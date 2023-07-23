@@ -1,0 +1,30 @@
+.header_container {
+  background-color: $headline_text-color;
+  @include flex_center;
+  justify-content: space-between;
+  height: 90px;
+
+  h1 {
+    @include desktop_headline-text;
+    color: $light_text-color;
+  }
+}
+.profile-btn {
+  margin-top: 4px;
+}
+.nav_wrapper {
+  @include flex_center;
+
+  nav {
+    margin-right: 41px;
+  }
+
+  a {
+    @include desktop_paragraph-regular;
+    color: $light_text-color;
+    text-decoration: none;
+    line-height: 50px;
+    letter-spacing: 0px;
+    margin-left: 30px;
+  }
+}

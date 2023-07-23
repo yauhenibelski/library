@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = ({ develop }) => ({
@@ -30,7 +29,14 @@ module.exports = ({ develop }) => ({
         test: /\.(png|jpe?g|gif|svg)$/,
         type: 'asset/resource',
         generator: {
-            filename: './img/[name][ext]',
+            filename: './assets/img/[name][ext]',
+        },
+      },
+      {
+        test: /\.(ttf)$/,
+        type: 'asset/resource',
+        generator: {
+            filename: './assets/fonts/[name][ext]',
         },
       },
       {
@@ -54,13 +60,5 @@ module.exports = ({ develop }) => ({
         new MiniCssExtractPlugin({
           filename: 'style.css'
         }),
-        // new CopyPlugin({
-        //   patterns: [
-        //       {
-        //         from: path.resolve(__dirname, 'src/'),
-        //         to:   path.resolve(__dirname, 'dist/')
-        //       }
-        //     ]
-        // })
      ],
 });

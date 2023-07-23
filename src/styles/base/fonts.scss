@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'Inter';
+  src: url(/assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Forum';
+  src: url(/assets/fonts/Forum/Forum-Regular.ttf) format('truetype');
+}
+body {
+  font-family: 'Inter, Forum';
+}
+@mixin desktop_headline-text {
+  font-family: 'Forum';
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+}
+@mixin desktop_paragraph-regular {
+  font-family: 'Inter';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+@mixin desktop_paragraph-small {
+  font-family: 'Inter';
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+}
+@mixin desktop_headline-secondary-text {
+  font-family: 'Forum';
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
+@mixin desktop_headline-third-text_inter{
+  font-family: 'Inter';
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+}
+@mixin desktop_headline-third-text_Forum{
+  font-family: 'Forum';
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+}

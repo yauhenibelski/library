@@ -13,5 +13,7 @@ module.exports = {
   "ignorePatterns": [".eslintrc.js", "webpack.config.js"],
   "rules": {
   "no-underscore-dangle": "off",
+  "consistent-return": "off",
+  "import/no-cycle": "off"
   }
   }
