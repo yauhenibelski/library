@@ -1,0 +1,38 @@
+.about {
+  @include flex_center;
+  flex-direction: column;
+  margin-top: 20px;
+
+  p {
+    @include desktop_paragraph-regular;
+    margin-top: 40px;
+  }
+}
+.img-wrapper {
+  @include flex_center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+
+  img {
+    width: 450px;
+    height: 560px;
+  }
+}
+.carousel-pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 68px;
+  height: 16px;
+  margin-top: 40px;
+
+  .range {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $headline_text-color;
+  }
+  .active {
+    background-color: $corporate_color;
+  }
+}

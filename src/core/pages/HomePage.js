@@ -1,4 +1,5 @@
-import WelcomeSection from '../components/Welcome_section.';
+import About from '../components/About_section';
+import WelcomeSection from '../components/Welcome_section';
 import Component from '../components/template/component';
 
 class HomePage extends Component {
@@ -8,6 +9,7 @@ class HomePage extends Component {
 
   render() {
     this._container.append(new WelcomeSection().render());
+    this._container.append(new About().render());
 
     return this._container;
   }

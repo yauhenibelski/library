@@ -1,0 +1,15 @@
+.headline-wrapper {
+  @include flex_center;
+  flex-direction: column;
+  h2 {
+    @include desktop_headline-secondary-text;
+    color: $headline_text-color;
+  }
+
+  .line {
+    width: 50px;
+    height: 1px;
+    background-color: $headline_text-color;
+    margin-top: 20px;
+  }
+}

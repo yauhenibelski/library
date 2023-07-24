@@ -4,6 +4,10 @@
 @import './base/root.scss';
 @import './utils/mixins.scss';
 
+// Components
+@import './components/Headline.scss';
+
 @import './layout/header.scss';
 @import './layout/welcome.scss';
+@import './layout/about.scss';
 
