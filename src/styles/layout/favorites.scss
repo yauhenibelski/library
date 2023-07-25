@@ -1,0 +1,78 @@
+.favorites {
+  @include flex_center;
+  flex-direction: column;
+  margin-top: 60px;
+
+  h3 {
+    align-self: flex-start;
+    margin-top: 40px;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+.weather-filter {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  margin-top: 41px;
+
+  .weather-input-wrapper {
+    position: relative;
+    margin-right: 90px;
+  }
+
+  label {
+    display: block;
+    position: relative;
+    font-family: 'Inter';
+    margin-left: 39px;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+
+    &::before {
+    content: '';
+    display: none;
+    position: absolute;
+    transform: translateX(-39px);
+    top: 11px;
+    left: 5px;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    background-color: $dark_text-color;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      transform: translateX(-39px);
+      bottom: 0;
+      height: 13px;
+      width: 13px;
+      border: solid 2px $dark_text-color;
+      border-radius: 50%;
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked + label {
+      &::before {
+        display: block;
+      }
+    }
+  }
+}
+
+.books-wrapper {
+  align-self: flex-start;
+  padding-right: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 41px;
+}

@@ -1,6 +1,7 @@
-import About from '../components/About_section';
-import WelcomeSection from '../components/Welcome_section';
 import Component from '../components/template/component';
+import About from '../components/layout/About_section';
+import WelcomeSection from '../components/layout/Welcome_section';
+import Favorites from '../components/layout/Favorites_section';
 
 class HomePage extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class HomePage extends Component {
   render() {
     this._container.append(new WelcomeSection().render());
     this._container.append(new About().render());
+    this._container.append(new Favorites().render());
 
     return this._container;
   }

@@ -1,9 +1,9 @@
-import createElement from '../utils/createElement';
-import Component from './template/component';
-import Headline from './ui/Headline';
-import img1 from '../../assets/img/image_1.png';
-import img2 from '../../assets/img/image_2.png';
-import img3 from '../../assets/img/image_3.png';
+import createElement from '../../utils/createElement';
+import Component from '../template/component';
+import Headline from '../ui/Headline';
+import img1 from '../../../assets/img/image_1.png';
+import img2 from '../../../assets/img/image_2.png';
+import img3 from '../../../assets/img/image_3.png';
 
 class About extends Component {
   constructor() {

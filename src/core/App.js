@@ -1,4 +1,4 @@
-import Header from './components/Header';
+import Header from './components/layout/Header';
 import profileIcon from '../assets/img/icon_profile.svg';
 import HomePage from './pages/HomePage';
 

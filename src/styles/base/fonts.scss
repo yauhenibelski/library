@@ -16,6 +16,13 @@ body {
   line-height: 50px;
   letter-spacing: 0.6px;
 }
+@mixin book_headline-regular {
+  font-family: 'Inter';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 2px;
+}
 @mixin desktop_paragraph-regular {
   font-family: 'Inter';
   font-size: 20px;

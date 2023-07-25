@@ -1,6 +1,6 @@
-import createElement from '../utils/createElement';
-import Component from './template/component';
-import App from '../App';
+import createElement from '../../utils/createElement';
+import Component from '../template/component';
+import App from '../../App';
 
 class Header extends Component {
   constructor() {

@@ -1,9 +1,9 @@
-import createElement from '../utils/createElement';
-import Component from './template/component';
+import createElement from '../../utils/createElement';
+import Component from '../template/component';
 
 class WelcomeSection extends Component {
   constructor() {
-    super('section', 'wrapper-welcome');
+    super('section', 'welcome');
   }
 
   _createSection() {

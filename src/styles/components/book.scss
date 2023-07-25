@@ -1,0 +1,56 @@
+.book {
+  position: relative;
+  width: 550px;
+  height: 555px;
+  padding-left: 20px;
+  padding-right: 170px;
+  border: solid 1px $dark_text-color;
+  margin-bottom: 40px;
+
+  .headline_book {
+    @include desktop_headline-secondary-text;
+    font-family: 'Forum';
+    font-size: 20px;
+    margin-top: 14px;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background-color: $dark_text-color;
+    }
+  }
+
+  .book-name_book {
+    @include book_headline-regular;
+    margin-top: 19px;
+    text-transform: uppercase;
+  }
+  .book-author_book {
+    @include book_headline-regular;
+    margin-top: 0px;
+  }
+  .description_book {
+    @include desktop_paragraph-regular;
+    text-transform: capitalize;
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-top: 19px;
+  }
+
+  .btn {
+    position: absolute;
+    width: 75px;
+    height: 30px;
+    left: 19px;
+    bottom: 14px;
+  }
+}
+.cover {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  bottom: -1px;
+  right: -41px;
+}

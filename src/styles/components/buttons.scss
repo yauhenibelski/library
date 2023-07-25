@@ -1,0 +1,9 @@
+.btn {
+  @include flex_center;
+  border-radius: 2px;
+  border: 1px solid $headline_text-color;
+  font-family: 'Inter';
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
