@@ -7,6 +7,7 @@ import books from '../../../assets/books';
 class Favorites extends Component {
   constructor() {
     super('section', 'favorites');
+    Favorites.bookId = [4];
   }
 
   _createSection() {
@@ -21,6 +22,7 @@ class Favorites extends Component {
       label.setAttribute('for', val.toLocaleLowerCase());
 
       if (!i) checkBox.checked = true;
+
       checkBox.setAttribute('type', 'radio');
       checkBox.setAttribute('name', 'weather');
       checkBox.setAttribute('value', val.toLocaleLowerCase());

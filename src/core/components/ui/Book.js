@@ -1,5 +1,6 @@
 import Component from '../template/component';
 import createElement from '../../utils/createElement';
+import Favorites from '../layout/Favorites_section';
 
 class Book extends Component {
   constructor(book) {
@@ -12,7 +13,8 @@ class Book extends Component {
     const bookName = createElement({ tagName: 'h3', className: 'book-name_book', text: this._book.name });
     const author = createElement({ tagName: 'h3', className: 'book-author_book', text: `By ${this._book.author}` });
     const description = createElement({ tagName: 'p', className: 'description_book', text: this._book.description });
-    const btn = createElement({ tagName: 'button', className: 'btn', text: 'Buy' });
+    const btnName = Favorites.bookId.includes(this._book.id) ? 'Own' : 'Buy';
+    const btn = createElement({ tagName: 'button', className: 'btn', text: btnName });
 
     const cover = new Image();
     cover.classList.add('cover');

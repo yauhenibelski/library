@@ -1,0 +1,13 @@
+.coffee-shop {
+  margin-top: 20px;
+}
+.info_coffee-shop {
+  @include desktop_paragraph-regular;
+  text-align: center;
+  letter-spacing: 2px;
+  margin: 40px 0px;
+}
+.menu-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

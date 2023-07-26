@@ -1,0 +1,64 @@
+.cafe-menu {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  max-width: 438px;
+  width: 100%;
+
+  h2 {
+    @include desktop_headline-secondary-text;
+    margin-bottom: 40px;
+    color: $corporate_color;
+  }
+
+  .line {
+    height: 1px;
+    width: 100px;
+    background-color: $corporate_color;
+  }
+
+  h3 {
+    @include desktop_paragraph-regular;
+    letter-spacing: 2px;
+  }
+
+  p {
+    @include desktop_paragraph-regular;
+    font-family: 'Forum';
+    letter-spacing: 2px;
+  }
+}
+.offer-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.left-side {
+  .line {
+    position: absolute;
+    right: 80px;
+  }
+  p {
+    position: absolute;
+    right: 0px;
+  }
+}
+
+.right-side {
+  max-width: none;
+
+  h2 {
+    align-self: flex-end;
+  }
+  .offer-wrapper {
+    justify-content: end;
+  }
+  .line {
+    position: absolute;
+    right: 90px;
+  }
+  h3 {
+    position: absolute;
+    right: 249px;
+  }
+}
