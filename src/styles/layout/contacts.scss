@@ -1,0 +1,31 @@
+.contacts {
+  margin-top: 20px;
+}
+.contacts-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.map-block {
+  width: 696px;
+  height: 414px;
+  background-image: url(/assets/img/fake_map.png);
+}
+.contacts-block {
+  h4 {
+    @include book_headline-regular;
+    font-size: 20px;
+  }
+  p {
+    @include desktop_paragraph-regular;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  h4:nth-child(1) {
+    margin-bottom: 40px;
+  }
+  h4:nth-child(5) {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+}
