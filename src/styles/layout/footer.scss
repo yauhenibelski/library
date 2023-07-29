@@ -1,0 +1,53 @@
+.footer-container {
+  margin: auto;
+  margin-top: 40px;
+  max-width: $desktop-width;
+  background-color: $dark_text-color;
+  padding: 20px 20px 42px 20px;
+  color: $light_text-color;
+}
+.info-container_footer {
+  display: flex;
+  justify-content: space-between
+}
+.contact-container_footer {
+  p {
+    @include desktop_paragraph-small;
+  }
+}
+.socialLink-container_footer {
+  margin-top: 20px;
+
+  a {
+    margin-right: 15px;
+  }
+}
+.work-time-container_footer {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    @include desktop_paragraph-small;
+    text-align: end;
+    margin-bottom: 10px;
+  }
+}
+
+.footer-line {
+  height: 1px;
+  background-color: $light_text-color;
+  margin-top: 20px;
+}
+
+.username-container {
+  @include flex_center;
+  margin-top: 45px;
+  justify-content: space-between;
+
+  p {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-family: 'Inter';
+  }
+}
