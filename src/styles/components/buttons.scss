@@ -7,4 +7,14 @@
   font-weight: 700;
   letter-spacing: 1px;
   cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    color: $corporate_color;
+    border-color: $corporate_color;
+  }
+}
+.active-btn {
+  color: $corporate_color;
+  border-color: $corporate_color;
 }

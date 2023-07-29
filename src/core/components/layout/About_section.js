@@ -8,6 +8,7 @@ import img3 from '../../../assets/img/image_3.png';
 class About extends Component {
   constructor() {
     super('section', 'about');
+    this._container.id = 'about';
   }
 
   _createSection() {

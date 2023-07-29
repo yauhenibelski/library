@@ -55,7 +55,7 @@ module.exports = ({ develop }) => ({
   },
   plugins: [
         new HtmlWebpackPlugin({
-          title: 'Library',
+          template: './index.html',
         }),
         new MiniCssExtractPlugin({
           filename: 'style.css'

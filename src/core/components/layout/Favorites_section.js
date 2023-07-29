@@ -8,6 +8,7 @@ class Favorites extends Component {
   constructor() {
     super('section', 'favorites');
     Favorites.bookId = [4];
+    this._container.id = 'favorites';
   }
 
   _createSection() {

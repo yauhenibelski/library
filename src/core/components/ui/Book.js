@@ -16,6 +16,11 @@ class Book extends Component {
     const btnName = Favorites.bookId.includes(this._book.id) ? 'Own' : 'Buy';
     const btn = createElement({ tagName: 'button', className: 'btn', text: btnName });
 
+    if (Favorites.bookId.includes(this._book.id)) {
+      btn.disabled = true;
+      btn.classList.add('active-btn');
+    }
+
     const cover = new Image();
     cover.classList.add('cover');
     cover.src = this._book.src;

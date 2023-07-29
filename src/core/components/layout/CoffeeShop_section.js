@@ -6,6 +6,7 @@ import CafeMenu from '../ui/CafeMenu';
 class CoffeeShop extends Component {
   constructor() {
     super('section', 'coffee-shop');
+    this._container.id = 'coffee shop';
   }
 
   _createSection() {

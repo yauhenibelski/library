@@ -28,9 +28,15 @@
     text-decoration: none;
     line-height: 50px;
     letter-spacing: 0px;
+    transition: 0.3s;
+
+    &:hover {
+      color: $corporate_color;
+    }
   }
 }
 
 .profile-btn {
   margin-top: 4px;
+  cursor: pointer;
 }

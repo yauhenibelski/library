@@ -11,23 +11,27 @@ class Footer extends Component {
 
   _createFooter() {
     const footerContainer = createElement({ tagName: 'div', className: 'footer-container' });
-
+    const socialLinkContainer = createElement({ tagName: 'div', className: 'socialLink-container_footer' });
     const infoContainer = createElement({ tagName: 'div', className: 'info-container_footer' });
     const contact = createElement({ tagName: 'div', className: 'contact-container_footer' });
-    const socialLinkContainer = createElement({ tagName: 'div', className: 'socialLink-container_footer' });
+
     const address = createElement({ tagName: 'p', text: '286 Cadman Plaza, New York,<br> NY 11238, United States' });
+    const addressLink = createElement({ tagName: 'a' });
+    addressLink.append(address);
+    addressLink.href = 'https://goo.gl/maps/URNfE9LFHjwYspUSA';
+
     const workTime = createElement({ tagName: 'div', className: 'work-time-container_footer' });
     workTime.insertAdjacentHTML('beforeend', `
-    <p>
-      Mon - Fri
-      <br>
-      08:00 am - 07:00 pm
-    </p>
-    <p>
-    Sat - Sun
-    <br>
-    10:00 am - 06:00 pm
-    </p>
+      <p>
+        Mon - Fri
+        <br>
+        08:00 am - 07:00 pm
+      </p>
+      <p>
+        Sat - Sun
+        <br>
+        10:00 am - 06:00 pm
+      </p>
     `);
 
     [[twitterSvg, 'twitter'], [instagramSvg, 'instagram'], [facebookSvg, 'facebook']].forEach((social) => {
@@ -43,7 +47,7 @@ class Footer extends Component {
       socialLinkContainer.append(link);
     });
 
-    contact.append(address);
+    contact.append(addressLink);
     contact.append(socialLinkContainer);
     infoContainer.append(contact);
     infoContainer.append(workTime);
@@ -52,8 +56,12 @@ class Footer extends Component {
     const userNameContainer = createElement({ tagName: 'div', className: 'username-container' });
     userNameContainer.insertAdjacentHTML('beforeend', `
       <p>2023</p>
-      <p>The Rolling Scopes School</p>
-      <p>Username</p>
+      <a href="https://rs.school/js-stage0/ ">
+        <p>The Rolling Scopes School</p>
+      </a>
+      <a href="https://github.com/yauhenibelski">
+        <p>Yauheni Belski</p>
+      </a>
     `);
 
     footerContainer.append(infoContainer);

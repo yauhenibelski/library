@@ -30,6 +30,7 @@
     font-size: 20px;
     font-weight: 400;
     cursor: pointer;
+    transition: 0.2s;
 
     &::before {
     content: '';
@@ -54,6 +55,11 @@
       width: 13px;
       border: solid 2px $dark_text-color;
       border-radius: 50%;
+    }
+
+
+    &:hover {
+        color: $corporate_color;
     }
   }
 

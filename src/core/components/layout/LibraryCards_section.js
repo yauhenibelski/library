@@ -6,6 +6,7 @@ import Login from '../ui/Login';
 class LibraryCards extends Component {
   constructor() {
     super('section', 'library-cards');
+    this._container.id = 'library card';
   }
 
   _createLogin() {
