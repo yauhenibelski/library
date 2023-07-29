@@ -1,0 +1,43 @@
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  height: 386px;
+  border: 3px solid $corporate_color;
+  padding: 20px 20px 0 20px;
+  // margin-top: 106px;
+
+  button {
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: 242px;
+    height: 44px;
+    margin-top: 20px;
+  }
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $corporate_color;
+  padding: 17px  17px  0px  17px;
+
+  h3 {
+    @include desktop_headline-text;
+    margin-bottom: 20px;
+  }
+
+  .login-name,
+  .login-num {
+    @include desktop_headline-text;
+    width: 520px;
+    height: 66px;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    border: none;
+  }
+}

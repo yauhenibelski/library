@@ -4,6 +4,7 @@ import WelcomeSection from '../components/layout/Welcome_section';
 import Favorites from '../components/layout/Favorites_section';
 import CoffeeShop from '../components/layout/CoffeeShop_section';
 import Contacts from '../components/layout/OurContacts_section';
+import LibraryCards from '../components/layout/LibraryCards_section';
 
 class HomePage extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class HomePage extends Component {
     this._container.append(new Favorites().render());
     this._container.append(new CoffeeShop().render());
     this._container.append(new Contacts().render());
+    this._container.append(new LibraryCards().render());
 
     return this._container;
   }

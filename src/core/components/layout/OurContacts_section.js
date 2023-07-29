@@ -11,6 +11,8 @@ class Contacts extends Component {
     const contactsWrapper = createElement({ tagName: 'div', className: 'contacts-wrapper' });
     const contactsBlock = createElement({ tagName: 'div', className: 'contacts-block' });
     const map = createElement({ tagName: 'div', className: 'map-block' });
+    const headline = new Headline('Our Contacts').render();
+    headline.id = 'contacts';
 
     // Contact Block *****
     contactsBlock.append(
@@ -35,7 +37,7 @@ class Contacts extends Component {
     contactsWrapper.append(contactsBlock);
     contactsWrapper.append(map);
 
-    this._container.append(new Headline('Our Contacts').render());
+    this._container.append(headline);
     this._container.append(contactsWrapper);
   }
 
