@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/rolling-scopes-school/yauhenibelski-JSFEPRESCHOOL2023Q2/library/",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
@@ -20,7 +21,9 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open --env develop"
+    "start": "webpack-dev-server --mode development --open --env develop",
+    "predeploy": "npm run build",
+	  "deploy": "gh-pages -d build"
   },
   "name": "library",
   "version": "1.0.0",
@@ -157,6 +160,7 @@
     "get-intrinsic": "^1.2.1",
     "get-stdin": "^4.0.1",
     "get-stream": "^6.0.1",
+    "gh-pages": "^5.0.0",
     "glob": "^7.2.3",
     "glob-parent": "^6.0.2",
     "glob-to-regexp": "^0.4.1",

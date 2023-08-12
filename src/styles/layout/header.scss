@@ -8,6 +8,10 @@
     @include desktop_headline-text;
     color: $light_text-color;
   }
+
+  .burger-btn {
+    display: none;
+  }
 }
 
 .nav_wrapper {

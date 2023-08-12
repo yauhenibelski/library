@@ -18,16 +18,22 @@ class About extends Component {
     const imageWrapper = createElement({ tagName: 'div', className: 'img-wrapper' });
     const carouselPagination = createElement({ tagName: 'div', className: 'carousel-pagination-wrapper' });
 
-    [img1, img2, img3].forEach((src, i) => {
+    [img1, img2, img3, null, null].forEach((src, i) => {
       const img = new Image();
       const range = createElement({ tagName: 'div', className: 'range' });
 
-      if (i < 1) range.classList.add('active');
+      if (src) {
+        if (i < 1) range.classList.add('active');
+
+        img.src = src;
+        img.alt = 'img';
+
+        imageWrapper.append(img);
+      }
 
       img.src = src;
       img.alt = 'img';
 
-      imageWrapper.append(img);
       carouselPagination.append(range);
     });
 
