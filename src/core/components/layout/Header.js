@@ -19,6 +19,8 @@ class Header extends Component {
     const ul = createElement({ tagName: 'ul' });
     const profileButton = createElement({ tagName: 'button', className: 'profile-btn' });
     const burgerBtn = createElement({ tagName: 'button', className: 'burger-btn' });
+    // const burgerWrapper = createElement({ tagName: 'div', className: 'burger-wrapper' });
+    const burger = createElement({ tagName: 'div', className: 'burger' });
 
     Header.textObject.nLink.forEach((linkName) => {
       const li = createElement({ tagName: 'li' });
@@ -26,18 +28,34 @@ class Header extends Component {
       link.href = `#${linkName.toLocaleLowerCase()}`;
       li.append(link);
       ul.append(li);
+
+      burger.append(li.cloneNode(true));
     });
 
     profileButton.append(App.profileIcon);
-
     section.append(headline);
     section.append(navWrapper);
-
     nav.append(ul);
-
     navWrapper.append(nav);
     navWrapper.append(profileButton);
     navWrapper.append(burgerBtn);
+    navWrapper.append(burger);
+
+    burgerBtn.onclick = () => {
+      burger.classList.toggle('burger-active');
+      burgerBtn.classList.toggle('burger-btn-active');
+      document.body.onclick = null;
+
+      setTimeout(() => {
+        document.body.onclick = () => {
+          if (burger.classList.contains('burger-active')) {
+            burger.classList.toggle('burger-active');
+            burgerBtn.classList.toggle('burger-btn-active');
+          }
+          document.body.onclick = null;
+        };
+      });
+    };
 
     this._container.append(section);
   }

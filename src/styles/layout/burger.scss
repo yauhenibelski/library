@@ -1,0 +1,23 @@
+.burger {
+  position: absolute;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $headline_text-color;
+  right: -50%;
+  height: 480px;
+  width: 332px;
+  top: 90px;
+  transition: 0.3s;
+  z-index: 1;
+
+  li {
+    margin-bottom: 30px;
+    margin-left: 0px;
+  }
+}
+
+.burger-active {
+  right: 13px;
+}
