@@ -10,11 +10,16 @@
   transition: 0.2s;
 
   &:hover {
-    color: $corporate_color;
-    border-color: $corporate_color;
+    // color: $corporate_color;
+    background-color: $corporate_color;
   }
 }
 .active-btn {
   color: $corporate_color;
   border-color: $corporate_color;
+
+  &:hover {
+    color: black;
+    border-color: black;
+  }
 }
