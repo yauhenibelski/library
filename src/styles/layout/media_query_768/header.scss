@@ -1,0 +1,17 @@
+@media (max-width: $tablet-width) {
+  .nav_wrapper {
+    nav {
+      display: none;
+    }
+    .burger-btn {
+      display: block;
+      background-image: url(/assets/img/burger.svg);
+      width: 45px;
+      height: 24px;
+      background-size: contain;
+      margin-left: 40px;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+  }
+}

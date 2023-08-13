@@ -18,6 +18,7 @@ class Header extends Component {
     const nav = createElement({ tagName: 'nav' });
     const ul = createElement({ tagName: 'ul' });
     const profileButton = createElement({ tagName: 'button', className: 'profile-btn' });
+    const burgerBtn = createElement({ tagName: 'button', className: 'burger-btn' });
 
     Header.textObject.nLink.forEach((linkName) => {
       const li = createElement({ tagName: 'li' });
@@ -36,6 +37,7 @@ class Header extends Component {
 
     navWrapper.append(nav);
     navWrapper.append(profileButton);
+    navWrapper.append(burgerBtn);
 
     this._container.append(section);
   }
