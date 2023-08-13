@@ -1,0 +1,18 @@
+@media (max-width: $tablet-width) {
+  .favorites {
+    margin-top: 65px;
+  }
+  .weather-filter {
+    width: 100%;
+    justify-content: space-between;
+    padding-right: 30px;
+
+    .weather-input-wrapper {
+      margin: 0;
+    }
+  }
+  .books-wrapper {
+    align-self: center;
+    flex-direction: column;
+  }
+}
