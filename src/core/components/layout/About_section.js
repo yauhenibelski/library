@@ -15,25 +15,33 @@ class About extends Component {
     const text = createElement({
       tagName: 'p', text: 'The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside',
     });
+    const carouselContainer = createElement({ tagName: 'div', className: 'carousel-container' });
     const imageWrapper = createElement({ tagName: 'div', className: 'img-wrapper' });
     const carouselPagination = createElement({ tagName: 'div', className: 'carousel-pagination-wrapper' });
+    const leftBtn = createElement({ tagName: 'button', className: 'leftBtn' });
+    const rightBtn = createElement({ tagName: 'button', className: 'rightBtn' });
 
-    [img1, img2, img3].forEach((src, i) => {
+    [img3, img2, img1, null, null].forEach((src, i) => {
       const img = new Image();
       const range = createElement({ tagName: 'div', className: 'range' });
 
-      if (i < 1) range.classList.add('active');
+      if (src) {
+        img.src = src;
+        img.alt = 'img';
 
-      img.src = src;
-      img.alt = 'img';
+        imageWrapper.append(img);
+      }
 
-      imageWrapper.append(img);
       carouselPagination.append(range);
+      if (i < 1) range.classList.add('active');
     });
 
     this._container.append(new Headline('About').render());
     this._container.append(text);
-    this._container.append(imageWrapper);
+    carouselContainer.append(leftBtn);
+    carouselContainer.append(imageWrapper);
+    carouselContainer.append(rightBtn);
+    this._container.append(carouselContainer);
     this._container.append(carouselPagination);
   }
 
