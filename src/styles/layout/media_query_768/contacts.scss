@@ -1,0 +1,9 @@
+@media (max-width: $tablet-width) {
+  .contacts-wrapper {
+    flex-direction: column;
+  }
+  .map-block {
+    margin: auto;
+    margin-top: 80px;
+}
+}
