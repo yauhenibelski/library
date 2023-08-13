@@ -1,14 +1,14 @@
 .burger {
   position: absolute;
-  padding-top: 10px;
   display: flex;
+  padding-top: 10px;
   flex-direction: column;
   align-items: center;
   background-color: $headline_text-color;
-  right: -50%;
+  right: 13px;
   height: 480px;
   width: 332px;
-  top: 90px;
+  top: -600px;
   transition: 0.3s;
   z-index: 1;
 
@@ -19,5 +19,5 @@
 }
 
 .burger-active {
-  right: 13px;
+  top: 90px;
 }
