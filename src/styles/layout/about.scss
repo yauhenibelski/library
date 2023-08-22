@@ -8,26 +8,44 @@
     margin-top: 40px;
     text-align: center;
   }
-  .leftBtn,
-  .rightBtn {
-    display: none
-  }
 }
 .img-wrapper {
   @include flex_center;
   justify-content: space-between;
   width: 100%;
   margin-top: 20px;
+  transition: 0.2s;
+  transform: translateX(0px);
 
   img {
-    width: 32%;
+    width: $img-desktop-width;
+    margin-right: 2%;
   }
+}
+
+.leftBtn,
+.rightBtn {
+  position: absolute;
+  top: 0;
+  width: $img-desktop-width;
+  height: 100%;
+  z-index: 2;
+  cursor: pointer;
+}
+.rightBtn {
+  right: 0;
+}
+.carousel-container-wrapper {
+  overflow: hidden;
+}
+.carousel-container {
+  position: relative;
 }
 .carousel-pagination-wrapper {
   display: flex;
   justify-content: space-between;
   height: 16px;
-  margin-top: 40px;
+  margin-top: 38px;
 
   .range {
     position: relative;
