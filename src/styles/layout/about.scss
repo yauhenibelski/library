@@ -36,10 +36,11 @@
   right: 0;
 }
 .carousel-container-wrapper {
-  overflow: hidden;
+  // overflow: hidden;
 }
 .carousel-container {
   position: relative;
+  overflow: hidden;
 }
 .carousel-pagination-wrapper {
   display: flex;

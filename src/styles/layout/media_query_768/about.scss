@@ -2,40 +2,41 @@
   .carousel-container {
     @include flex_center;
     height: 600px;
-    // background-color: blueviolet;
-    width: 100%;
     display: flex;
     flex-direction: row;
-
-    .leftBtn,
-    .rightBtn {
-      display: block;
-      background-image: url(/assets/img/arr.svg);
-      background-repeat: no-repeat;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-    }
-    .rightBtn {
-      transform: rotate(180deg);
-    }
+    width: 62%;
+    max-width: $img-tablet-width;
   }
-
+  .leftBtn,
+  .rightBtn {
+    display: block;
+    position: relative;
+    background-image: url(/assets/img/arr.svg);
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .rightBtn {
+    transform: rotate(180deg);
+  }
+  .carousel-container-wrapper {
+    @include flex_center;
+    justify-content: space-evenly;
+    width: 100%;
+  }
   .carousel-pagination-wrapper {
     margin-top: 0px;
+    justify-content: space-evenly;
   }
   .img-wrapper {
-    $img-width: 450px;
+    margin-top: 0px;
     position: relative;
-    justify-content: center;
-    height: 600px;
-    width: $img-width;
-    margin: 58px;
+    width: $img-tablet-width;
 
     img {
-      position: absolute;
-      width: $img-width;
-      margin: 0 20px;
+      width: $img-tablet-width;
+      // margin: 0 20px;
     }
   }
 }

@@ -12,7 +12,7 @@ class About extends Component {
   constructor() {
     super('section', 'about');
     this._container.id = 'about';
-    About.currentSlideNum = 1;
+    About.currentSlideNum = window.innerWidth > 1024 ? 1 : 0;
   }
 
   imgs = [img1, img2, img3, img4, img5].map((src) => {
@@ -47,21 +47,27 @@ class About extends Component {
       this._elem.imageWrapper.append(img);
 
       if (window.innerWidth > 1024 && (i !== 0 && i !== arr.length - 1)) {
-        if (About.currentSlideNum === i) {
-          this._elem.rangesBtn[i].classList.toggle('active');
-        }
+        this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
+        this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
+      }
+      if (window.innerWidth <= 1024) {
+        this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
         this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
       }
     });
+
     this._elem.leftBtn.onclick = () => {
       const slideNum = About.currentSlideNum - 1;
-      if (slideNum >= 1) {
+      if ((slideNum >= 0 && window.innerWidth < 1024) || slideNum > 0) {
         changeSlide(slideNum, this._elem.imageWrapper, this._elem.rangesBtn[slideNum]);
       }
     };
     this._elem.rightBtn.onclick = () => {
       const slideNum = About.currentSlideNum + 1;
-      if (slideNum < this.imgs.length - 1) {
+      if (
+        (slideNum <= this.imgs.length - 1 && window.innerWidth < 1024)
+        || slideNum < this.imgs.length - 1
+      ) {
         changeSlide(slideNum, this._elem.imageWrapper, this._elem.rangesBtn[slideNum]);
       }
     };
@@ -71,9 +77,9 @@ class About extends Component {
 
     this._elem.carouselContainer.append(this._elem.imageWrapper);
 
-    this._elem.carouselContainer.append(this._elem.leftBtn);
+    this._elem.carouselContainerWrap.append(this._elem.leftBtn);
     this._elem.carouselContainerWrap.append(this._elem.carouselContainer);
-    this._elem.carouselContainer.append(this._elem.rightBtn);
+    this._elem.carouselContainerWrap.append(this._elem.rightBtn);
 
     this._container.append(this._elem.carouselContainerWrap);
     this._container.append(this._elem.carouselPaginationWrap);
