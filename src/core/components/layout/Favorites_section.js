@@ -1,33 +1,38 @@
 import createElement from '../../utils/createElement';
 import Component from '../template/component';
-import Book from '../ui/Book';
 import Headline from '../ui/Headline';
-import books from '../../../assets/books';
+import BooksContainer from '../ui/BooksContainer';
 
 class Favorites extends Component {
   constructor() {
     super('section', 'favorites');
-    Favorites.bookId = [4];
+    Favorites.bookId = [];
+    Favorites.value = 'winter';
     this._container.id = 'favorites';
   }
 
   _createSection() {
     const weatherFilter = createElement({ tagName: 'form', className: 'weather-filter' });
-    const booksWrapper = createElement({ tagName: 'div', className: 'books-wrapper' });
+    weatherFilter.onchange = (w) => {
+      Favorites.value = w.target.value;
+      Array.from(BooksContainer._container.children).forEach((elem) => elem.classList.toggle('book-active'));
+      setTimeout(() => { BooksContainer.render(); }, 100);
+    };
 
-    ['Winter', 'Spring', 'Summer', 'Autumn'].forEach((val, i) => {
+    // create checkBoxes
+    ['Winter', 'Spring', 'Summer', 'Autumn'].forEach((val) => {
       const checkBox = createElement({ tagName: 'input' });
       const label = createElement({ tagName: 'label', text: val });
       const inputWrapper = createElement({ tagName: 'div', className: 'weather-input-wrapper' });
 
       label.setAttribute('for', val.toLocaleLowerCase());
 
-      if (!i) checkBox.checked = true;
-
       checkBox.setAttribute('type', 'radio');
       checkBox.setAttribute('name', 'weather');
       checkBox.setAttribute('value', val.toLocaleLowerCase());
       checkBox.setAttribute('id', val.toLocaleLowerCase());
+
+      if (Favorites.value === checkBox.value) checkBox.checked = true;
 
       inputWrapper.append(checkBox);
       inputWrapper.append(label);
@@ -39,9 +44,7 @@ class Favorites extends Component {
     this._container.append(createElement({ tagName: 'h3', text: 'Pick favorites of season' }));
     this._container.append(weatherFilter);
 
-    books.forEach((book) => booksWrapper.append(new Book(book).render()));
-
-    this._container.append(booksWrapper);
+    this._container.append(new BooksContainer().render());
   }
 
   render() {

@@ -6,6 +6,8 @@
   padding-right: 170px;
   border: solid 1px $dark_text-color;
   margin-bottom: 40px;
+  transition: 0.2s;
+  opacity: 0;
 
   .headline_book {
     @include desktop_headline-secondary-text;
@@ -53,4 +55,8 @@
   height: 300px;
   bottom: -1px;
   right: -41px;
+}
+
+.book-active {
+  opacity: 1;
 }

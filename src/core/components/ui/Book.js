@@ -36,6 +36,7 @@ class Book extends Component {
 
   render() {
     this._createBook();
+    setTimeout(() => this._container.classList.toggle('book-active'), 100);
     return this._container;
   }
 }
