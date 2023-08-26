@@ -2,10 +2,14 @@ import createElement from '../../utils/createElement';
 import Component from '../template/component';
 import App from '../../App';
 import Burger from '../ui/burger';
+import Navigation from './Navigation';
 
 class Header extends Component {
   constructor() {
     super('header');
+
+    this.section = createElement({ tagName: 'section', className: 'header_container' });
+    this.navWrapper = createElement({ tagName: 'div', className: 'nav_wrapper' });
 
     Header.textObject = {
       headline: 'Brooklyn Public Library',
@@ -21,28 +25,22 @@ class Header extends Component {
   }
 
   _createHeader() {
-    const section = createElement({ tagName: 'section', className: 'header_container' });
     const headline = createElement({ tagName: 'h1', text: Header.textObject.headline });
-    const navWrapper = createElement({ tagName: 'div', className: 'nav_wrapper' });
-    const nav = createElement({ tagName: 'nav' });
-    const ul = createElement({ tagName: 'ul' });
     const profileButton = createElement({ tagName: 'button', className: 'profile-btn' });
-
-    Header.textObject.nLink.forEach((li) => ul.append(li));
-
+    const nav = new Navigation(Header.textObject.nLink).render();
     const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
 
     profileButton.append(App.profileIcon);
-    section.append(headline);
-    section.append(navWrapper);
-    nav.append(ul);
-    navWrapper.append(nav);
-    navWrapper.append(profileButton);
-    navWrapper.append(burgerBtn);
 
-    section.append(burgerContainer);
+    this.section.append(headline);
+    this.section.append(this.navWrapper);
+    this.section.append(burgerContainer);
 
-    this._container.append(section);
+    this.navWrapper.append(nav);
+    this.navWrapper.append(profileButton);
+    this.navWrapper.append(burgerBtn);
+
+    this._container.append(this.section);
   }
 
   render() {
