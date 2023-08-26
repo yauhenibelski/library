@@ -1,13 +1,22 @@
 import createElement from '../../utils/createElement';
 import Component from '../template/component';
 import App from '../../App';
+import Burger from '../ui/burger';
 
 class Header extends Component {
   constructor() {
     super('header');
+
     Header.textObject = {
       headline: 'Brooklyn Public Library',
-      nLink: ['About', 'Favorites', 'Coffee shop', 'Contacts', 'Library Card'],
+      nLink: ['About', 'Favorites', 'Coffee shop', 'Contacts', 'Library Card'].map((linkName) => {
+        const li = createElement({ tagName: 'li' });
+        const link = createElement({ tagName: 'a', text: linkName });
+
+        link.href = `#${linkName.toLocaleLowerCase()}`;
+        li.append(link);
+        return li;
+      }),
     };
   }
 
@@ -18,19 +27,10 @@ class Header extends Component {
     const nav = createElement({ tagName: 'nav' });
     const ul = createElement({ tagName: 'ul' });
     const profileButton = createElement({ tagName: 'button', className: 'profile-btn' });
-    const burgerBtn = createElement({ tagName: 'button', className: 'burger-btn' });
-    // const burgerWrapper = createElement({ tagName: 'div', className: 'burger-wrapper' });
-    const burger = createElement({ tagName: 'div', className: 'burger' });
 
-    Header.textObject.nLink.forEach((linkName) => {
-      const li = createElement({ tagName: 'li' });
-      const link = createElement({ tagName: 'a', text: linkName });
-      link.href = `#${linkName.toLocaleLowerCase()}`;
-      li.append(link);
-      ul.append(li);
+    Header.textObject.nLink.forEach((li) => ul.append(li));
 
-      burger.append(li.cloneNode(true));
-    });
+    const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
 
     profileButton.append(App.profileIcon);
     section.append(headline);
@@ -39,23 +39,8 @@ class Header extends Component {
     navWrapper.append(nav);
     navWrapper.append(profileButton);
     navWrapper.append(burgerBtn);
-    navWrapper.append(burger);
 
-    burgerBtn.onclick = () => {
-      burger.classList.toggle('burger-active');
-      burgerBtn.classList.toggle('burger-btn-active');
-      document.body.onclick = null;
-
-      setTimeout(() => {
-        document.body.onclick = () => {
-          if (burger.classList.contains('burger-active')) {
-            burger.classList.toggle('burger-active');
-            burgerBtn.classList.toggle('burger-btn-active');
-          }
-          document.body.onclick = null;
-        };
-      });
-    };
+    section.append(burgerContainer);
 
     this._container.append(section);
   }

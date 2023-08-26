@@ -3,19 +3,5 @@
     nav {
       display: none;
     }
-    .burger-btn {
-      display: block;
-      background-image: url(/assets/img/burger.svg);
-      width: 45px;
-      height: 24px;
-      background-size: contain;
-      margin-left: 40px;
-      background-repeat: no-repeat;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .burger-btn-active {
-      background-image: url(/assets/img/burger_btn_active.svg);
-    }
   }
 }

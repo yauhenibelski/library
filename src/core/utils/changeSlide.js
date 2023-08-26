@@ -1,7 +1,5 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-unused-expressions */
 /* eslint-disable import/prefer-default-export */
-
 import About from '../components/layout/About_section';
 
 export const changeSlide = (currentNumSlide, container, range) => {

@@ -56,6 +56,18 @@ class About extends Component {
       }
     });
 
+    this._container.append(new Headline('About').render());
+    this._container.append(this._elem.text);
+
+    this._elem.carouselContainer.append(this._elem.imageWrapper);
+
+    this._elem.carouselContainerWrap.append(this._elem.leftBtn);
+    this._elem.carouselContainerWrap.append(this._elem.carouselContainer);
+    this._elem.carouselContainerWrap.append(this._elem.rightBtn);
+
+    this._container.append(this._elem.carouselContainerWrap);
+    this._container.append(this._elem.carouselPaginationWrap);
+
     this._elem.leftBtn.onclick = () => {
       const slideNum = About.currentSlideNum - 1;
       if ((slideNum >= 0 && window.innerWidth < 1024) || slideNum > 0) {
@@ -71,18 +83,6 @@ class About extends Component {
         changeSlide(slideNum, this._elem.imageWrapper, this._elem.rangesBtn[slideNum]);
       }
     };
-
-    this._container.append(new Headline('About').render());
-    this._container.append(this._elem.text);
-
-    this._elem.carouselContainer.append(this._elem.imageWrapper);
-
-    this._elem.carouselContainerWrap.append(this._elem.leftBtn);
-    this._elem.carouselContainerWrap.append(this._elem.carouselContainer);
-    this._elem.carouselContainerWrap.append(this._elem.rightBtn);
-
-    this._container.append(this._elem.carouselContainerWrap);
-    this._container.append(this._elem.carouselPaginationWrap);
   }
 
   render() {
