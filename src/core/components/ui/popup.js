@@ -9,6 +9,8 @@ class Popup extends Component {
 
   _createPopup() {
     this._container.append(this.content);
+    this._container.onclick = () => this._container.remove();
+    this.content.onclick = (elem) => elem.stopPropagation();
   }
 
   render() {

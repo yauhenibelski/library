@@ -1,0 +1,35 @@
+.drop-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  height: 115px;
+  background-color: white;
+  bottom: -90px;
+  right: 105px;
+  z-index: 1;
+
+  h3 {
+    @include desktop_paragraph-small;
+    font-weight: 700;
+    margin: 10px auto;
+    margin-bottom: 10px;
+
+    &::before {
+      content: '';
+      background-color: $corporate_color;
+      display: block;
+      position: relative;
+      bottom: -25px;
+      height: 1px;
+      width: 40px;
+      margin: auto;
+
+    }
+  }
+  button {
+    @include desktop_paragraph-small;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}

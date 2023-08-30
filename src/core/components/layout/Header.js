@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 import createElement from '../../utils/createElement';
 import Component from '../template/component';
 import App from '../../App';
 import Burger from '../ui/burger';
 import Navigation from './Navigation';
-import Popup from '../ui/popup';
+import DropMenu from '../ui/dropMenu';
 
 class Header extends Component {
   constructor() {
@@ -31,7 +32,27 @@ class Header extends Component {
     const nav = new Navigation(Header.textObject.nLink).render();
     const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
 
-    profileButton.onclick = () => Popup.run('987');
+    profileButton.onclick = () => {
+      if (DropMenu.open) {
+        DropMenu._container.remove();
+        DropMenu.open = false;
+        document.body.onclick = null;
+      } else {
+        this.navWrapper.append(new DropMenu().render());
+        DropMenu.open = true;
+
+        setTimeout(() => {
+          document.body.onclick = (elem) => {
+            if (elem.target === DropMenu._container || elem.target.parentElement === DropMenu._container) {
+              return;
+            }
+            DropMenu._container.remove();
+            DropMenu.open = false;
+            document.body.onclick = null;
+          };
+        });
+      }
+    };
 
     profileButton.append(App.profileIcon);
 
