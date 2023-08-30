@@ -9,7 +9,9 @@
     color: $light_text-color;
   }
 }
-
+.profile-btn-wrap {
+  position: relative;
+}
 .profile-btn {
   margin-top: 4px;
   cursor: pointer;

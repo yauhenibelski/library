@@ -29,6 +29,7 @@ class Header extends Component {
   _createHeader() {
     const headline = createElement({ tagName: 'h1', text: Header.textObject.headline });
     const profileButton = createElement({ tagName: 'button', className: 'profile-btn' });
+    const profileButtonWrap = createElement({ tagName: 'div', className: 'profile-btn-wrap' });
     const nav = new Navigation(Header.textObject.nLink).render();
     const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
 
@@ -38,7 +39,7 @@ class Header extends Component {
         DropMenu.open = false;
         document.body.onclick = null;
       } else {
-        this.navWrapper.append(new DropMenu().render());
+        profileButtonWrap.append(new DropMenu().render());
         DropMenu.open = true;
 
         setTimeout(() => {
@@ -55,13 +56,14 @@ class Header extends Component {
     };
 
     profileButton.append(App.profileIcon);
+    profileButtonWrap.append(profileButton);
 
     this.section.append(headline);
     this.section.append(this.navWrapper);
     this.section.append(burgerContainer);
 
     this.navWrapper.append(nav);
-    this.navWrapper.append(profileButton);
+    this.navWrapper.append(profileButtonWrap);
     this.navWrapper.append(burgerBtn);
 
     this._container.append(this.section);
