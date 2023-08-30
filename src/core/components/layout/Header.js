@@ -3,6 +3,7 @@ import Component from '../template/component';
 import App from '../../App';
 import Burger from '../ui/burger';
 import Navigation from './Navigation';
+import Popup from '../ui/popup';
 
 class Header extends Component {
   constructor() {
@@ -29,6 +30,8 @@ class Header extends Component {
     const profileButton = createElement({ tagName: 'button', className: 'profile-btn' });
     const nav = new Navigation(Header.textObject.nLink).render();
     const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
+
+    profileButton.onclick = () => Popup.run('987');
 
     profileButton.append(App.profileIcon);
 
