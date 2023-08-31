@@ -1,0 +1,13 @@
+.custom-input-container {
+  margin-top: 20px;
+
+  h4 {
+    @include desktop_paragraph-small;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+  }
+  input {
+    width: 100%;
+    border: 1px solid $corporate_color;
+  }
+}

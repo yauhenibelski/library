@@ -1,8 +1,11 @@
+/* eslint-disable class-methods-use-this */
 import Component from '../template/component';
 import createElement from '../../utils/createElement';
+import Popup from './popup';
+import ModalLogin from './ModalLogin';
 
 class DropMenu extends Component {
-  textObject = {
+  elem = {
     header: createElement({ tagName: 'h3', text: 'Profile' }),
     logInBtn: createElement({ tagName: 'button', className: 'logIn-btn', text: 'Log In' }),
     registerBtn: createElement({ tagName: 'button', className: 'register-btn', text: 'Register' }),
@@ -16,10 +19,25 @@ class DropMenu extends Component {
     DropMenu._container = this._container;
   }
 
+  _closeMenu() {
+    DropMenu.open = false;
+    DropMenu._container.remove();
+  }
+
   _createMenu() {
-    this._container.append(this.textObject.header);
-    this._container.append(this.textObject.logInBtn);
-    this._container.append(this.textObject.registerBtn);
+    this.elem.logInBtn.onclick = () => {
+      Popup.run(new ModalLogin('login').render());
+      this._closeMenu();
+    };
+
+    this.elem.registerBtn.onclick = () => {
+      Popup.run(new ModalLogin('register').render());
+      this._closeMenu();
+    };
+
+    this._container.append(this.elem.header);
+    this._container.append(this.elem.logInBtn);
+    this._container.append(this.elem.registerBtn);
   }
 
   render() {

@@ -2,6 +2,8 @@ import createElement from '../../utils/createElement';
 import Component from '../template/component';
 import Headline from '../ui/Headline';
 import Login from '../ui/Login';
+import ModalLogin from '../ui/ModalLogin';
+import Popup from '../ui/popup';
 
 class LibraryCards extends Component {
   constructor() {
@@ -27,6 +29,9 @@ class LibraryCards extends Component {
     const buttons = createElement({ tagName: 'div', className: 'btn-container_info' });
     const signUpBtn = createElement({ tagName: 'button', className: 'btn', text: 'Sign Up' });
     const loginBtn = createElement({ tagName: 'button', className: 'btn', text: 'Log in' });
+
+    signUpBtn.onclick = () => Popup.run(new ModalLogin('register').render());
+    loginBtn.onclick = () => Popup.run(new ModalLogin('login').render());
 
     buttons.append(signUpBtn);
     buttons.append(loginBtn);
