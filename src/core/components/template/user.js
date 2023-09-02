@@ -8,6 +8,8 @@ class User {
     this.lastName = user.lastName;
     this.password = user.password;
     this.email = user.email;
+    this.visits = 1;
+    this.books = [];
     this.card = user.card || null;
     this.cardNumber = user.cardNumber || null;
     this.icon = user.firstName

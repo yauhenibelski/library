@@ -1,4 +1,4 @@
-.login-wrapper {
+.findLibraryCard-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@
   }
 }
 
-.login-container {
+.findLibraryCard-container {
   display: flex;
   flex-direction: column;
   background-color: $corporate_color;
@@ -30,8 +30,8 @@
     margin-bottom: 20px;
   }
 
-  .login-name,
-  .login-num {
+  .findLibraryCard-name,
+  .findLibraryCard-num {
     @include desktop_headline-text;
     width: 520px;
     height: 66px;
@@ -40,4 +40,7 @@
     margin-bottom: 25px;
     border: none;
   }
+}
+.findLibrary-text-active {
+  color: $corporate_color;
 }

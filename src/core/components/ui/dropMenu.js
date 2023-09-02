@@ -22,7 +22,6 @@ class DropMenu extends Component {
   closeMenu() {
     DropMenu.open = false;
     this._container.remove();
-    console.log('close');
   }
 
   _createMenu() {

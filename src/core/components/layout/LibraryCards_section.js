@@ -1,7 +1,7 @@
 import createElement from '../../utils/createElement';
 import Component from '../template/component';
 import Headline from '../ui/Headline';
-import Login from '../ui/Login';
+import FindLibraryCard from '../ui/FindLibraryCard';
 import ModalLogin from '../ui/ModalLogin';
 import Popup from '../ui/popup';
 
@@ -16,7 +16,7 @@ class LibraryCards extends Component {
     const h3 = createElement({ tagName: 'h3', text: 'Find your Library card', className: 'library-card-text' });
 
     loginContainer.append(h3);
-    loginContainer.append(new Login().render());
+    loginContainer.append(new FindLibraryCard().render());
 
     this._container.append(new Headline('Digital Library Cards').render());
     return loginContainer;

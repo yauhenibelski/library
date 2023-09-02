@@ -22,7 +22,7 @@ class ModalLogin extends Component {
   }
 
   _saveValidRes(e, prop) {
-    if (e.target.validity.valid && e.target.value) {
+    if (e.target.validity.valid && e.target.value && e.target.value !== '') {
       this.result[prop] = e.target.value;
     } else {
       this.result[prop] = undefined;
@@ -57,8 +57,8 @@ class ModalLogin extends Component {
     this.approveBtn.innerText = 'Sign Up';
 
     this._container.append(this.headline);
-    this._container.append(new CustomInput('First name', 'text', (e) => { this._saveValidRes(e, 'firstName'); }).render());
-    this._container.append(new CustomInput('Last name', 'text', (e) => { this._saveValidRes(e, 'lastName'); }).render());
+    this._container.append(new CustomInput('First name', 'name', (e) => { this._saveValidRes(e, 'firstName'); }).render());
+    this._container.append(new CustomInput('Last name', 'name', (e) => { this._saveValidRes(e, 'lastName'); }).render());
     this._container.append(new CustomInput('E-mail', 'email', (e) => { this._saveValidRes(e, 'email'); }).render());
     this._container.append(new CustomInput('Password', 'password', (e) => { this._saveValidRes(e, 'password'); }).render());
 
