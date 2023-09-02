@@ -9,9 +9,12 @@ import LibraryCards from '../components/layout/LibraryCards_section';
 class HomePage extends Component {
   constructor() {
     super('main', 'homePage');
+    HomePage._container = this._container;
+    HomePage.render = this.render;
   }
 
   render() {
+    this._container.innerHTML = '';
     this._container.append(new WelcomeSection().render());
     this._container.append(new About().render());
     this._container.append(new Favorites().render());

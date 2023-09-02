@@ -9,9 +9,7 @@ import DropMenu from '../ui/dropMenu';
 class Header extends Component {
   constructor() {
     super('header');
-
-    this.section = createElement({ tagName: 'section', className: 'header_container' });
-    this.navWrapper = createElement({ tagName: 'div', className: 'nav_wrapper' });
+    Header.elem = Object.assign(this);
 
     Header.textObject = {
       headline: 'Brooklyn Public Library',
@@ -27,13 +25,16 @@ class Header extends Component {
   }
 
   _createHeader() {
+    const section = createElement({ tagName: 'section', className: 'header_container' });
+    const navWrapper = createElement({ tagName: 'div', className: 'nav_wrapper' });
     const headline = createElement({ tagName: 'h1', text: Header.textObject.headline });
     const profileButton = createElement({ tagName: 'button', className: 'profile-btn' });
     const profileButtonWrap = createElement({ tagName: 'div', className: 'profile-btn-wrap' });
     const nav = new Navigation(Header.textObject.nLink).render();
     const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
 
-    profileButton.onclick = () => {
+    profileButtonWrap.onclick = () => {
+      console.log(App.user);
       if (DropMenu.open) {
         DropMenu._container.remove();
         DropMenu.open = false;
@@ -55,21 +56,22 @@ class Header extends Component {
       }
     };
 
-    profileButton.append(App.profileIcon);
+    profileButton.append(App.user.icon);
     profileButtonWrap.append(profileButton);
 
-    this.section.append(headline);
-    this.section.append(this.navWrapper);
-    this.section.append(burgerContainer);
+    section.append(headline);
+    section.append(navWrapper);
+    section.append(burgerContainer);
 
-    this.navWrapper.append(nav);
-    this.navWrapper.append(profileButtonWrap);
-    this.navWrapper.append(burgerBtn);
+    navWrapper.append(nav);
+    navWrapper.append(profileButtonWrap);
+    navWrapper.append(burgerBtn);
 
-    this._container.append(this.section);
+    this._container.append(section);
   }
 
   render() {
+    this._container.innerHTML = '';
     this._createHeader();
     return this._container;
   }

@@ -7,6 +7,7 @@ import img3 from '../../../assets/img/image_3.png';
 import img4 from '../../../assets/img/image_4.png';
 import img5 from '../../../assets/img/image_5.png';
 import { changeSlide } from '../../utils/changeSlide';
+import getImg from '../../utils/getImg';
 
 class About extends Component {
   constructor() {
@@ -15,13 +16,7 @@ class About extends Component {
     About.currentSlideNum = window.innerWidth > 1024 ? 1 : 0;
   }
 
-  imgs = [img1, img2, img3, img4, img5].map((src) => {
-    const img = new Image();
-    img.src = src;
-    img.alt = 'img';
-
-    return img;
-  });
+  imgs = [img1, img2, img3, img4, img5].map((src) => getImg(src));
 
   _elem = {
     text: createElement({
@@ -35,6 +30,7 @@ class About extends Component {
     carouselPaginationWrap: createElement({ tagName: 'div', className: 'carousel-pagination-wrapper' }),
     rangesBtn: this.imgs.map((_, i) => {
       const range = createElement({ tagName: 'div', className: 'range' });
+
       range.onclick = () => {
         changeSlide(i, this._elem.imageWrapper, range);
       };

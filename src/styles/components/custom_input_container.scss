@@ -9,5 +9,11 @@
   input {
     width: 100%;
     border: 1px solid $corporate_color;
+    outline: none;
+    box-sizing: border-box;
+
+    &:invalid {
+      border-color: red;
+    }
   }
 }

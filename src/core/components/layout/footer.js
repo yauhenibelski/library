@@ -1,12 +1,15 @@
+/* eslint-disable indent */
 import Component from '../template/component';
 import createElement from '../../utils/createElement';
 import instagramSvg from '../../../assets/img/instagram.svg';
 import facebookSvg from '../../../assets/img/facebook.svg';
 import twitterSvg from '../../../assets/img/twitter.svg';
+import App from '../../App';
 
 class Footer extends Component {
   constructor() {
     super('footer');
+    Footer.elem = Object.assign(this);
   }
 
   _createFooter() {
@@ -60,7 +63,13 @@ class Footer extends Component {
         <p>The Rolling Scopes School</p>
       </a>
       <a href="https://github.com/yauhenibelski">
-        <p>Yauheni Belski</p>
+        <p>
+        ${
+          App.user.firstName
+            ? `${App.user.firstName} ${App.user.lastName}`
+            : 'Yauheni Belski'
+        }
+        </p>
       </a>
     `);
 
@@ -72,6 +81,7 @@ class Footer extends Component {
   }
 
   render() {
+    this._container.innerHTML = '';
     this._createFooter();
     return this._container;
   }
