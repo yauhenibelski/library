@@ -66,7 +66,6 @@ class ModalLogin extends Component {
       this.result.cardNumber = Math.random().toString(16).substring(2, 11);
       App.user = new User(this.result);
       users.set(this.result.cardNumber, this.result);
-      console.log(users);
       saveUsersInLocalStorage();
       renderPage();
       this.removePopup();

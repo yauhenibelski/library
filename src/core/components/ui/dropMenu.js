@@ -16,23 +16,24 @@ class DropMenu extends Component {
   constructor() {
     super('div', 'drop-menu');
     DropMenu.open = false;
-    DropMenu._container = this._container;
+    DropMenu.elem = Object.assign(this);
   }
 
-  _closeMenu() {
+  closeMenu() {
     DropMenu.open = false;
-    DropMenu._container.remove();
+    this._container.remove();
+    console.log('close');
   }
 
   _createMenu() {
     this.elem.logInBtn.onclick = () => {
       Popup.run(new ModalLogin('login').render());
-      this._closeMenu();
+      this.closeMenu();
     };
 
     this.elem.registerBtn.onclick = () => {
       Popup.run(new ModalLogin('register').render());
-      this._closeMenu();
+      this.closeMenu();
     };
 
     this._container.append(this.elem.header);

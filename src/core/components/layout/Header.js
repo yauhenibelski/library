@@ -33,23 +33,21 @@ class Header extends Component {
     const nav = new Navigation(Header.textObject.nLink).render();
     const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
 
-    profileButtonWrap.onclick = () => {
-      console.log(App.user);
+    profileButton.onclick = () => {
       if (DropMenu.open) {
-        DropMenu._container.remove();
-        DropMenu.open = false;
+        DropMenu.elem.closeMenu();
         document.body.onclick = null;
       } else {
         profileButtonWrap.append(new DropMenu().render());
         DropMenu.open = true;
+        document.body.onclick = null;
 
         setTimeout(() => {
           document.body.onclick = (elem) => {
-            if (elem.target === DropMenu._container || elem.target.parentElement === DropMenu._container) {
+            if (elem.target === DropMenu.elem._container || elem.target.parentElement === DropMenu.elem._container) {
               return;
             }
-            DropMenu._container.remove();
-            DropMenu.open = false;
+            DropMenu.elem.closeMenu();
             document.body.onclick = null;
           };
         });
