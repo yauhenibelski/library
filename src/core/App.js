@@ -6,21 +6,21 @@ import User from './components/template/user';
 const q = {
   books: [],
   card:
-null,
+    null,
   cardNumber:
-'a668d5579',
+    'a668d5579',
   email:
-'1@1',
+    '1@1',
   firstName:
-'john',
+    'john',
   icon:
-{},
+    {},
   lastName:
-'doe',
+    'doe',
   password:
-'11111111',
+    '11111111',
   visits:
-15,
+    15,
 };
 class App {
   constructor() {

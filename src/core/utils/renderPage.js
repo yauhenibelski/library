@@ -3,9 +3,13 @@ import Footer from '../components/layout/footer';
 import HomePage from '../pages/HomePage';
 
 const renderPage = () => {
-  Header.elem.render();
-  HomePage.render();
-  Footer.elem.render();
+  document.body.style.opacity = 0;
+  setTimeout(() => {
+    document.body.style = '';
+    Header.elem.render();
+    HomePage.render();
+    Footer.elem.render();
+  }, 350);
 };
 
 export default renderPage;

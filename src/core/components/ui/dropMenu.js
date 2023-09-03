@@ -25,7 +25,8 @@ class DropMenu extends Component {
 
   closeMenu() {
     DropMenu.open = false;
-    this._container.remove();
+    this._container.style.opacity = 0;
+    setTimeout(() => { this._container.remove(); }, 100);
   }
 
   _createMenu() {
@@ -65,7 +66,9 @@ class DropMenu extends Component {
 
   render() {
     this._container.innerHTML = '';
+    this._container.style.opacity = 0;
     this._createMenu();
+    setTimeout(() => { this._container.style.opacity = ''; }, 100);
     return this._container;
   }
 }

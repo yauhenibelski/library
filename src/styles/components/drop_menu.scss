@@ -7,6 +7,7 @@
   background-color: white;
   right: 0px;
   z-index: 1;
+  transition: 0.3s;
 
   h3 {
     @include desktop_paragraph-small;

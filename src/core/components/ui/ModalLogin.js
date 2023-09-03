@@ -31,7 +31,7 @@ class ModalLogin extends Component {
   }
 
   removePopup() {
-    this._container.parentNode.remove();
+    Popup.elem.remove();
     this.result = new User();
   }
 

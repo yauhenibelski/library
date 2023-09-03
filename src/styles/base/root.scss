@@ -4,6 +4,9 @@
   padding: 0;
   scroll-behavior: smooth;
 }
+body {
+  transition: 0.2s;
+}
 section {
   margin: auto;
   max-width: $desktop-width;
