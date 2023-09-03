@@ -33,6 +33,8 @@ class Header extends Component {
     const nav = new Navigation(Header.textObject.nLink).render();
     const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
 
+    if (App.user.cardNumber) profileButtonWrap.setAttribute('title', `${App.user.firstName} ${App.user.lastName}`);
+
     profileButton.onclick = () => {
       if (Burger.open) Burger.elem.closeBurger();
 

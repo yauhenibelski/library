@@ -9,6 +9,7 @@ class CustomInput extends Component {
     this.input = createElement({ tagName: 'input', className: 'custom-input' });
     this.input.type = type;
     this.input.oninput = oninput;
+    this.input.required = true;
 
     if (type === 'password') this.input.setAttribute('minlength', '8');
   }

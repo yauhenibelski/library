@@ -73,8 +73,6 @@ class FindLibraryCard extends Component {
             FindLibraryCard.elem.render();
           }, 10000);
         }
-      } else {
-        alert('Wrong name or card number!!!');
       }
     };
   }

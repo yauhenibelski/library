@@ -6,6 +6,7 @@ import ModalLogin from './ModalLogin';
 import App from '../../App';
 import User from '../template/user';
 import renderPage from '../../utils/renderPage';
+import ModalProfile from './ModalProfile';
 
 class DropMenu extends Component {
   constructor() {
@@ -41,6 +42,11 @@ class DropMenu extends Component {
     this.logOut.onclick = () => {
       App.user = new User();
       renderPage();
+      this.closeMenu();
+    };
+
+    this.myProfileBtn.onclick = () => {
+      Popup.run(new ModalProfile().render());
       this.closeMenu();
     };
 

@@ -5,6 +5,7 @@ import FindLibraryCard from '../ui/FindLibraryCard';
 import ModalLogin from '../ui/ModalLogin';
 import Popup from '../ui/popup';
 import App from '../../App';
+import ModalProfile from '../ui/ModalProfile';
 
 class LibraryCards extends Component {
   constructor() {
@@ -40,6 +41,7 @@ class LibraryCards extends Component {
     if (App.user.cardNumber) {
       headline.innerText = 'Visit your profile';
       text.innerText = 'With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.';
+      profileBtn.onclick = () => Popup.run(new ModalProfile().render());
 
       buttons.append(profileBtn);
     } else {
