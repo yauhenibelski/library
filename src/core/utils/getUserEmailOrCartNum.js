@@ -5,7 +5,6 @@ const getUserEmailOrCartNum = (val) => {
 
   const parseUsers = Object.values(Object.fromEntries(users));
   const [user] = parseUsers.filter((userObj) => userObj.email === val);
-  console.log(parseUsers);
 
   if (user) return users.get(user.cardNumber);
 };

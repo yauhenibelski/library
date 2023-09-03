@@ -13,7 +13,7 @@ class ModalLogin extends Component {
   constructor(value) {
     super('div', 'modal-login');
     this.value = value;
-    this.result = App.user;
+    this.result = { ...App.user };
 
     this.approveBtn = createElement({ tagName: 'button', className: 'btn' });
     this.headline = createElement({ tagName: 'h3', className: 'custom-input-headline' });
@@ -46,7 +46,7 @@ class ModalLogin extends Component {
     this._container.append(new CustomInput('Password', 'password', (e) => { this._saveValidRes(e, 'password'); }).render());
 
     this.offerBtn.onclick = () => {
-      this._container.parentNode.remove();
+      this.removePopup();
       Popup.run(new ModalLogin('register').render());
     };
 
@@ -58,8 +58,8 @@ class ModalLogin extends Component {
         users.set(user.cardNumber, user);
         App.user = new User(users.get(user.cardNumber));
         saveUsersInLocalStorage();
-        renderPage();
         this.removePopup();
+        renderPage();
       } else {
         alert('User not found');
       }

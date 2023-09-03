@@ -34,6 +34,8 @@ class Header extends Component {
     const { burgerBtn, burgerContainer } = new Burger(Header.textObject.nLink).render();
 
     profileButton.onclick = () => {
+      if (Burger.open) Burger.elem.closeBurger();
+
       if (DropMenu.open) {
         DropMenu.elem.closeMenu();
         document.body.onclick = null;

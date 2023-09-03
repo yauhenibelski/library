@@ -5,6 +5,8 @@ import DropMenu from './dropMenu';
 class Burger extends Component {
   constructor(links) {
     super('div', 'burger-wrapper');
+    Burger.open = false;
+    Burger.elem = Object.assign(this);
     this.links = links.map((link) => link.cloneNode(true));
     this.button = createElement({ tagName: 'button', className: 'burger-btn' });
     this.burger = createElement({ tagName: 'div', className: 'burger' });
@@ -17,24 +19,36 @@ class Burger extends Component {
 
     this.button.onclick = () => {
       if (DropMenu.open) {
-        DropMenu._container.remove();
+        DropMenu.elem._container.remove();
         DropMenu.open = false;
       }
 
-      this.burger.classList.toggle('burger-active');
-      this.button.classList.toggle('burger-btn-active');
-      document.body.onclick = null;
+      if (Burger.open) {
+        this.closeBurger();
+        document.body.onclick = null;
+      } else {
+        this.openBurger();
 
-      setTimeout(() => {
-        document.body.onclick = () => {
-          if (this.burger.classList.contains('burger-active')) {
-            this.burger.classList.toggle('burger-active');
-            this.button.classList.toggle('burger-btn-active');
-          }
-          document.body.onclick = null;
-        };
-      });
+        setTimeout(() => {
+          document.body.onclick = () => {
+            if (Burger.open) this.closeBurger();
+            document.body.onclick = null;
+          };
+        });
+      }
     };
+  }
+
+  openBurger() {
+    this.burger.classList.add('burger-active');
+    this.button.classList.add('burger-btn-active');
+    Burger.open = true;
+  }
+
+  closeBurger() {
+    this.burger.classList.remove('burger-active');
+    this.button.classList.remove('burger-btn-active');
+    Burger.open = false;
   }
 
   render() {
