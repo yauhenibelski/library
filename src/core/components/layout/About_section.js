@@ -39,17 +39,19 @@ class About extends Component {
   };
 
   _createSection() {
-    this.imgs.forEach((img, i, arr) => {
+    this.imgs.forEach((img, i) => {
       this._elem.imageWrapper.append(img);
+      this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
+      this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
 
-      if (window.innerWidth > 1024 && (i !== 0 && i !== arr.length - 1)) {
-        this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
-        this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
-      }
-      if (window.innerWidth <= 1024) {
-        this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
-        this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
-      }
+      // if (window.innerWidth > 1024 && (i !== 0 && i !== arr.length - 1)) {
+      //   this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
+      //   this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
+      // }
+      // if (window.innerWidth <= 1024) {
+      //   this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
+      //   this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
+      // }
     });
 
     this._container.append(new Headline('About').render());

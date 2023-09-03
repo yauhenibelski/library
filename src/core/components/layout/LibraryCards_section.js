@@ -4,6 +4,7 @@ import Headline from '../ui/Headline';
 import FindLibraryCard from '../ui/FindLibraryCard';
 import ModalLogin from '../ui/ModalLogin';
 import Popup from '../ui/popup';
+import App from '../../App';
 
 class LibraryCards extends Component {
   constructor() {
@@ -13,8 +14,11 @@ class LibraryCards extends Component {
 
   _createLogin() {
     const loginContainer = createElement({ tagName: 'div', className: 'login-container_library-cards' });
-    const h3 = createElement({ tagName: 'h3', text: 'Find your Library card', className: 'library-card-text' });
-
+    const h3 = createElement({
+      tagName: 'h3',
+      text: App.user.cardNumber ? 'Your Library card' : 'Find your Library card',
+      className: 'library-card-text',
+    });
     loginContainer.append(h3);
     loginContainer.append(new FindLibraryCard().render());
 
@@ -24,19 +28,31 @@ class LibraryCards extends Component {
 
   _createInfo() {
     const infoContainer = createElement({ tagName: 'div', className: 'info-container_library-cards' });
-    const h3 = createElement({ tagName: 'h3', text: 'Get a reader card', className: 'headline-text_info-container' });
-    const text = createElement({ tagName: 'p', text: 'You will be able to see a reader card after logging into account or you can register a new account' });
+    const headline = createElement({ tagName: 'h3', className: 'headline-text_info-container' });
+    const text = createElement({ tagName: 'p' });
     const buttons = createElement({ tagName: 'div', className: 'btn-container_info' });
     const signUpBtn = createElement({ tagName: 'button', className: 'btn', text: 'Sign Up' });
     const loginBtn = createElement({ tagName: 'button', className: 'btn', text: 'Log in' });
+    const profileBtn = createElement({ tagName: 'button', className: 'btn', text: 'Profile' });
 
-    signUpBtn.onclick = () => Popup.run(new ModalLogin('register').render());
-    loginBtn.onclick = () => Popup.run(new ModalLogin('login').render());
+    infoContainer.append(headline);
 
-    buttons.append(signUpBtn);
-    buttons.append(loginBtn);
+    if (App.user.cardNumber) {
+      headline.innerText = 'Visit your profile';
+      text.innerText = 'With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.';
 
-    infoContainer.append(h3);
+      buttons.append(profileBtn);
+    } else {
+      headline.innerText = 'Get a reader card';
+      signUpBtn.onclick = () => Popup.run(new ModalLogin('register').render());
+      loginBtn.onclick = () => Popup.run(new ModalLogin('login').render());
+
+      text.innerText = 'You will be able to see a reader card after logging into account or you can register a new account';
+
+      buttons.append(signUpBtn);
+      buttons.append(loginBtn);
+    }
+
     infoContainer.append(text);
     infoContainer.append(buttons);
 

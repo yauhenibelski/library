@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-return-assign */
+import App from '../../App';
 import users from '../../users';
 import createElement from '../../utils/createElement';
 import Component from '../template/component';
@@ -17,7 +18,7 @@ class FindLibraryCard extends Component {
   }
 
   _createComponent() {
-    const h3 = createElement({ tagName: 'h3', text: 'Brooklyn Public Library' });
+    const headline = createElement({ tagName: 'h3', text: 'Brooklyn Public Library' });
     const loginContainer = createElement({ tagName: 'div', className: 'findLibraryCard-container' });
     const textInput = createElement({ tagName: 'input', className: 'findLibraryCard-name' });
     const numInput = createElement({ tagName: 'input', className: 'findLibraryCard-num' });
@@ -33,14 +34,22 @@ class FindLibraryCard extends Component {
     numInput.placeholder = 'Card number';
     numInput.value = FindLibraryCard.inputValue.cardNumber;
 
-    loginContainer.append(h3);
+    loginContainer.append(headline);
     loginContainer.append(textInput);
     loginContainer.append(numInput);
 
     this._container.append(loginContainer);
 
-    if (FindLibraryCard.showInfo) {
+    if (FindLibraryCard.showInfo || App.user.cardNumber) {
+      if (App.user.cardNumber) {
+        FindLibraryCard.inputValue.cardNumber = App.user.cardNumber;
+
+        textInput.value = App.user.firstName;
+        numInput.value = App.user.cardNumber;
+      }
+
       this._container.append(new UserInfoContainer(FindLibraryCard.inputValue.cardNumber).render());
+
       textInput.classList.add('findLibrary-text-active');
       numInput.classList.add('findLibrary-text-active');
     } else {
@@ -63,9 +72,9 @@ class FindLibraryCard extends Component {
             };
             FindLibraryCard.elem.render();
           }, 10000);
-        } else {
-          alert('Wrong name!!!');
         }
+      } else {
+        alert('Wrong name or card number!!!');
       }
     };
   }

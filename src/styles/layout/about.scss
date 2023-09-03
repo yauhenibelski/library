@@ -42,6 +42,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .carousel-pagination-wrapper {
   display: flex;
   justify-content: space-between;
@@ -55,6 +56,11 @@
     margin: 5px;
     border-radius: 50%;
     background-color: $headline_text-color;
+
+    &:first-child,
+    &:last-child {
+      display: none;
+    }
 
     &::after {
       left: -7px;

@@ -27,6 +27,13 @@
   .carousel-pagination-wrapper {
     margin-top: 0px;
     justify-content: space-evenly;
+
+    .range {
+      &:first-child,
+      &:last-child {
+        display: block;
+      }
+    }
   }
   .img-wrapper {
     margin-top: 0px;

@@ -3,20 +3,23 @@ import Component from '../template/component';
 import createElement from '../../utils/createElement';
 import Popup from './popup';
 import ModalLogin from './ModalLogin';
+import App from '../../App';
+import User from '../template/user';
+import renderPage from '../../utils/renderPage';
 
 class DropMenu extends Component {
-  elem = {
-    header: createElement({ tagName: 'h3', text: 'Profile' }),
-    logInBtn: createElement({ tagName: 'button', className: 'logIn-btn', text: 'Log In' }),
-    registerBtn: createElement({ tagName: 'button', className: 'register-btn', text: 'Register' }),
-    myProfileBtn: createElement({ tagName: 'button', className: 'my-profile-btn', text: 'My profile' }),
-    logOutBtn: createElement({ tagName: 'button', className: 'log-out-btn', text: 'Log Out' }),
-  };
-
   constructor() {
     super('div', 'drop-menu');
     DropMenu.open = false;
     DropMenu.elem = Object.assign(this);
+
+    this.header = createElement({ tagName: 'h3', text: App.user.cardNumber || 'Profile' });
+    this.logInBtn = createElement({ tagName: 'button', className: 'logIn-btn', text: 'Log In' });
+    this.logOut = createElement({ tagName: 'button', className: 'logIn-out', text: 'Log Out' });
+    this.myProfileBtn = createElement({ tagName: 'button', className: 'my-profile-btn', text: 'My profile' });
+    this.registerBtn = createElement({ tagName: 'button', className: 'register-btn', text: 'Register' });
+    this.myProfileBtn = createElement({ tagName: 'button', className: 'my-profile-btn', text: 'My profile' });
+    this.logOutBtn = createElement({ tagName: 'button', className: 'log-out-btn', text: 'Log Out' });
   }
 
   closeMenu() {
@@ -25,22 +28,37 @@ class DropMenu extends Component {
   }
 
   _createMenu() {
-    this.elem.logInBtn.onclick = () => {
+    this.logInBtn.onclick = () => {
       Popup.run(new ModalLogin('login').render());
       this.closeMenu();
     };
 
-    this.elem.registerBtn.onclick = () => {
+    this.registerBtn.onclick = () => {
       Popup.run(new ModalLogin('register').render());
       this.closeMenu();
     };
 
-    this._container.append(this.elem.header);
-    this._container.append(this.elem.logInBtn);
-    this._container.append(this.elem.registerBtn);
+    this.logOut.onclick = () => {
+      App.user = new User();
+      renderPage();
+      this.closeMenu();
+    };
+
+    this._container.append(this.header);
+
+    if (App.user.cardNumber) {
+      this.header.style.fontSize = '11px';
+
+      this._container.append(this.myProfileBtn);
+      this._container.append(this.logOut);
+    } else {
+      this._container.append(this.logInBtn);
+      this._container.append(this.registerBtn);
+    }
   }
 
   render() {
+    this._container.innerHTML = '';
     this._createMenu();
     return this._container;
   }

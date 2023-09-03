@@ -7,6 +7,7 @@ import User from '../template/user';
 import users from '../../users';
 import saveUsersInLocalStorage from '../../utils/saveUsersInLocalStorage';
 import renderPage from '../../utils/renderPage';
+import getUserEmailOrCartNum from '../../utils/getUserEmailOrCartNum';
 
 class ModalLogin extends Component {
   constructor(value) {
@@ -41,12 +42,27 @@ class ModalLogin extends Component {
     this.approveBtn.innerText = 'Log In';
 
     this._container.append(this.headline);
-    this._container.append(new CustomInput('E-mail or readers card', 'email').render());
-    this._container.append(new CustomInput('Password', 'password').render());
+    this._container.append(new CustomInput('E-mail or readers card', 'name', (e) => { this._saveValidRes(e, 'cardNumber'); }).render());
+    this._container.append(new CustomInput('Password', 'password', (e) => { this._saveValidRes(e, 'password'); }).render());
 
     this.offerBtn.onclick = () => {
       this._container.parentNode.remove();
       Popup.run(new ModalLogin('register').render());
+    };
+
+    this.approveBtn.onclick = () => {
+      const user = getUserEmailOrCartNum(this.result.cardNumber);
+
+      if (user && user.password === this.result.password) {
+        user.visits += 1;
+        users.set(user.cardNumber, user);
+        App.user = new User(users.get(user.cardNumber));
+        saveUsersInLocalStorage();
+        renderPage();
+        this.removePopup();
+      } else {
+        alert('User not found');
+      }
     };
   }
 
@@ -82,10 +98,14 @@ class ModalLogin extends Component {
     const validInputs = [...inputs].every((elem) => elem.validity.valid);
     const fieldsAreFilled = Object.values(this.result).every((prop) => prop !== undefined && prop !== '');
 
-    if (validInputs && fieldsAreFilled) {
-      this.approveBtn.disabled = false;
-    } else {
-      this.approveBtn.disabled = true;
+    if (this.value === 'register') {
+      if (validInputs && fieldsAreFilled) this.approveBtn.disabled = false;
+      else this.approveBtn.disabled = true;
+    }
+
+    if (this.value === 'login') {
+      if (this.result.password && this.result.cardNumber) this.approveBtn.disabled = false;
+      else this.approveBtn.disabled = true;
     }
   }
 
