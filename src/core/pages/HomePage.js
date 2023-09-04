@@ -9,8 +9,7 @@ import LibraryCards from '../components/layout/LibraryCards_section';
 class HomePage extends Component {
   constructor() {
     super('main', 'homePage');
-    HomePage._container = this._container;
-    HomePage.render = this.render;
+    HomePage.elem = Object.assign(this);
   }
 
   render() {

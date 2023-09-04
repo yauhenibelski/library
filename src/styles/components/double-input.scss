@@ -1,0 +1,14 @@
+.double-input {
+  display: flex;
+  flex-wrap: wrap;
+
+  h4 {
+    width: 100%;
+  }
+  .custom-input {
+    width: 45px;
+    &:nth-child(2) {
+      margin-right: 10px;
+    }
+  }
+}

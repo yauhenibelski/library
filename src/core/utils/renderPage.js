@@ -7,7 +7,7 @@ const renderPage = () => {
   setTimeout(() => {
     document.body.style = '';
     Header.elem.render();
-    HomePage.render();
+    HomePage.elem.render();
     Footer.elem.render();
   }, 350);
 };

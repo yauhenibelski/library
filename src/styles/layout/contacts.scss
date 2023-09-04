@@ -16,6 +16,10 @@
   height: 414px;
   background-image: url(/assets/img/fake_map.png);
 }
+.google-map {
+  height: 100%;
+  width: 100%;
+}
 .contacts-block {
   h4 {
     @include book_headline-regular;

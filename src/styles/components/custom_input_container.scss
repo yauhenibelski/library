@@ -6,14 +6,15 @@
     letter-spacing: 0.3px;
     margin-bottom: 4px;
   }
-  input {
-    width: 100%;
-    border: 1px solid $corporate_color;
-    outline: none;
-    box-sizing: border-box;
+}
 
-    &:invalid {
-      border-color: red;
-    }
+.custom-input {
+  width: 100%;
+  border: 1px solid $corporate_color;
+  outline: none;
+  box-sizing: border-box;
+
+  &:invalid {
+    border-color: red;
   }
 }

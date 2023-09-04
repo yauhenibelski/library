@@ -19,7 +19,7 @@ class Popup extends Component {
     this.content.onclick = (elem) => elem.stopPropagation();
     this._container.onclick = () => this.remove();
 
-    setTimeout(() => { this._container.style.opacity = ''; }, 100);
+    setTimeout(() => { this._container.style = ''; }, 100);
   }
 
   render() {

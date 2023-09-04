@@ -1,6 +1,7 @@
 import createElement from '../../utils/createElement';
 import Component from '../template/component';
 import Headline from '../ui/Headline';
+import googleMap from '../../../assets/map.html';
 
 class Contacts extends Component {
   constructor() {
@@ -14,6 +15,7 @@ class Contacts extends Component {
     const map = createElement({ tagName: 'div', className: 'map-block' });
     const headline = new Headline('Our Contacts').render();
     headline.id = 'contacts';
+    map.insertAdjacentHTML('beforeend', googleMap);
 
     // Contact Block *****
     // contactsBlock.append(

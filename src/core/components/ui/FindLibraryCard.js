@@ -46,6 +46,8 @@ class FindLibraryCard extends Component {
 
         textInput.value = App.user.firstName;
         numInput.value = App.user.cardNumber;
+        textInput.oninput = () => textInput.value = App.user.firstName;
+        numInput.oninput = () => numInput.value = App.user.cardNumber;
       }
 
       this._container.append(new UserInfoContainer(FindLibraryCard.inputValue.cardNumber).render());

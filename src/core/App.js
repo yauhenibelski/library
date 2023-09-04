@@ -3,28 +3,20 @@ import HomePage from './pages/HomePage';
 import Footer from './components/layout/footer';
 import User from './components/template/user';
 
-const q = {
-  books: [],
-  card:
-    null,
-  cardNumber:
-    'a668d5579',
-  email:
-    '1@1',
-  firstName:
-    'john',
-  icon:
-    {},
-  lastName:
-    'doe',
-  password:
-    '11111111',
-  visits:
-    15,
-};
+// const q = {
+//   books: [],
+//   card: null,
+//   cardNumber: 'a668d5579',
+//   email: '1@1',
+//   firstName: 'john',
+//   icon: {},
+//   lastName: 'doe',
+//   password: '11111111',
+//   visits: 15,
+// };
 class App {
   constructor() {
-    App.user = new User(q);
+    App.user = new User();
     this._container = document.body;
 
     this._elements = {
