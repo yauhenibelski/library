@@ -6,8 +6,7 @@ import Favorites from '../layout/Favorites_section';
 class BooksContainer extends Component {
   constructor() {
     super('div', 'books-wrapper');
-    BooksContainer.render = this.render;
-    BooksContainer._container = this._container;
+    BooksContainer.elem = Object.assign(this);
   }
 
   render() {

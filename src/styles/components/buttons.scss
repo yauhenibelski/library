@@ -7,10 +7,12 @@
   font-weight: 700;
   letter-spacing: 1px;
   transition: 0.2s;
+  cursor: pointer;
 
   &:hover {
-    // color: $corporate_color;
-    background-color: $corporate_color;
+    &:not([disabled]) {
+      background-color: $corporate_color;
+    }
   }
 }
 .active-btn {
@@ -18,7 +20,7 @@
   border-color: $corporate_color;
 
   &:hover {
-    color: black;
-    border-color: black;
+      background-color: transparent;
+      cursor: auto;
   }
 }

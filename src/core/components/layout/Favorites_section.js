@@ -15,11 +15,10 @@ class Favorites extends Component {
     const weatherFilter = createElement({ tagName: 'form', className: 'weather-filter' });
     weatherFilter.onchange = (w) => {
       Favorites.value = w.target.value;
-      Array.from(BooksContainer._container.children).forEach((elem) => elem.classList.toggle('book-active'));
-      setTimeout(() => { BooksContainer.render(); }, 100);
+      Array.from(BooksContainer.elem._container.children).forEach((elem) => elem.classList.toggle('book-active'));
+      setTimeout(() => { BooksContainer.elem.render(); }, 100);
     };
 
-    // create checkBoxes
     ['Winter', 'Spring', 'Summer', 'Autumn'].forEach((val) => {
       const checkBox = createElement({ tagName: 'input' });
       const label = createElement({ tagName: 'label', text: val });

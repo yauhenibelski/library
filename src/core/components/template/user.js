@@ -9,7 +9,7 @@ class User {
     this.password = user.password;
     this.email = user.email;
     this.visits = 1;
-    this.books = [];
+    this.books = user.books || [];
     this.card = user.card || null;
     this.cardNumber = user.cardNumber || null;
     this.icon = user.firstName

@@ -1,8 +1,10 @@
 .buy-library-card-container {
   position: relative;
-  max-width: 650px;
+  max-width: 640px;
   width: 100%;
   padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: white;
 
   .custom-input-container {
     margin-top: 18px;
@@ -39,7 +41,7 @@
   }
   .inputs_container {
     width: 260px;
-    padding: 0px 20px 0 40px;
+    padding: 0px 20px 0 35px;
   }
   .warning_container {
     width: 100%;

@@ -1,6 +1,10 @@
 import Component from '../template/component';
 import createElement from '../../utils/createElement';
-import Favorites from '../layout/Favorites_section';
+import getImg from '../../utils/getImg';
+import App from '../../App';
+import Popup from './popup';
+import BuyLibraryCard from './ModalBuyLibraryCard';
+import ModalLogin from './ModalLogin';
 
 class Book extends Component {
   constructor(book) {
@@ -9,22 +13,25 @@ class Book extends Component {
   }
 
   _createBook() {
+    const hasBook = App.user.books.includes(this._book.id);
     const headline = createElement({ tagName: 'h3', className: 'headline_book', text: 'Staff Picks' });
     const bookName = createElement({ tagName: 'h3', className: 'book-name_book', text: this._book.name });
     const author = createElement({ tagName: 'h3', className: 'book-author_book', text: `By ${this._book.author}` });
     const description = createElement({ tagName: 'p', className: 'description_book', text: this._book.description });
-    const btnName = Favorites.bookId.includes(this._book.id) ? 'Own' : 'Buy';
-    const btn = createElement({ tagName: 'button', className: 'btn', text: btnName });
+    const btn = createElement({ tagName: 'button', className: 'btn', text: hasBook ? 'Own' : 'Buy' });
 
-    if (Favorites.bookId.includes(this._book.id)) {
-      btn.disabled = true;
+    if (hasBook) {
       btn.classList.add('active-btn');
+      btn.disabled = true;
     }
 
-    const cover = new Image();
+    btn.onclick = () => {
+      if (App.user.cardNumber) Popup.run(new BuyLibraryCard(this._book).render());
+      else Popup.run(new ModalLogin('login').render());
+    };
+
+    const cover = getImg(this._book.src);
     cover.classList.add('cover');
-    cover.src = this._book.src;
-    cover.alt = 'cover';
 
     this._container.append(headline);
     this._container.append(bookName);

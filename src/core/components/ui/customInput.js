@@ -2,16 +2,17 @@ import Component from '../template/component';
 import createElement from '../../utils/createElement';
 
 class CustomInput extends Component {
-  constructor(headline, type, oninput) {
+  constructor(headline, type, oninput, minlength) {
     super('div', 'custom-input-container');
 
     this.headline = createElement({ tagName: 'h4', className: 'custom-input-headline', text: headline });
     this.input = createElement({ tagName: 'input', className: 'custom-input' });
+    this.input.classList.add('invalid-custom-input');
     this.input.type = type;
     this.input.oninput = oninput;
     this.input.required = true;
 
-    if (type === 'password') this.input.setAttribute('minlength', '8');
+    if (minlength) this.input.setAttribute('minlength', `${minlength}`);
   }
 
   _createElem() {

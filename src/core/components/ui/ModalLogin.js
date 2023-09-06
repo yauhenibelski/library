@@ -25,8 +25,10 @@ class ModalLogin extends Component {
   _saveValidRes(e, prop) {
     if (e.target.validity.valid && e.target.value && e.target.value !== '') {
       this.result[prop] = e.target.value;
+      e.target.classList.remove('invalid-custom-input');
     } else {
       this.result[prop] = undefined;
+      e.target.classList.add('invalid-custom-input');
     }
   }
 
@@ -43,7 +45,7 @@ class ModalLogin extends Component {
 
     this._container.append(this.headline);
     this._container.append(new CustomInput('E-mail or readers card', 'name', (e) => { this._saveValidRes(e, 'cardNumber'); }).render());
-    this._container.append(new CustomInput('Password', 'password', (e) => { this._saveValidRes(e, 'password'); }).render());
+    this._container.append(new CustomInput('Password', 'password', (e) => { this._saveValidRes(e, 'password'); }, 8).render());
 
     this.offerBtn.onclick = () => {
       this.removePopup();
@@ -76,7 +78,7 @@ class ModalLogin extends Component {
     this._container.append(new CustomInput('First name', 'name', (e) => { this._saveValidRes(e, 'firstName'); }).render());
     this._container.append(new CustomInput('Last name', 'name', (e) => { this._saveValidRes(e, 'lastName'); }).render());
     this._container.append(new CustomInput('E-mail', 'email', (e) => { this._saveValidRes(e, 'email'); }).render());
-    this._container.append(new CustomInput('Password', 'password', (e) => { this._saveValidRes(e, 'password'); }).render());
+    this._container.append(new CustomInput('Password', 'password', (e) => { this._saveValidRes(e, 'password'); }, 8).render());
 
     this.approveBtn.onclick = () => {
       this.result.cardNumber = Math.random().toString(16).substring(2, 11);
