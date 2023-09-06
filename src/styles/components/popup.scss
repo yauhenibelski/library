@@ -9,3 +9,17 @@
   z-index: 3;
   transition: 0.2s;
 }
+.popup-close-btn {
+  position: absolute;
+  z-index: 5;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.popup-close-black-btn {
+  background-image: url(/assets/img/close_btn_black.svg);
+}
+.popup-close-white-btn {
+  background-image: url(/assets/img/close_btn_white.svg);
+}

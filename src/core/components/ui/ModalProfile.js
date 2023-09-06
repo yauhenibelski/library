@@ -4,6 +4,7 @@ import getImg from '../../utils/getImg';
 import Component from '../template/component';
 import UserInfoContainer from './UserInfoContainer';
 import iconCopy from '../../../assets/img/icon_copy.svg';
+import getBookByID from '../../utils/getBookByID';
 
 class ModalProfile extends Component {
   constructor() {
@@ -21,11 +22,17 @@ class ModalProfile extends Component {
     const profileInfoWrap = createElement({ tagName: 'div', className: 'profile-info-wrap' });
     const headline = createElement({ tagName: 'h2', text: 'My profile' });
     const rentedBooksText = createElement({ tagName: 'h3', text: 'Rented books' });
-    const rentedBooksWrap = createElement({ tagName: 'div', className: 'rented-books-wrap' });
+    const rentedBooksWrap = createElement({ tagName: 'ul', className: 'rented-books-wrap' });
     const cardNumberWrap = createElement({ tagName: 'div', className: 'card-number-wrap' });
     const cardText = createElement({ tagName: 'p', text: 'Card number' });
     const cardNumber = createElement({ tagName: 'p', text: `${App.user.cardNumber}` });
     const copyIcon = getImg(iconCopy);
+
+    App.user.books.forEach((bookId) => {
+      const book = getBookByID(bookId);
+      const li = createElement({ tagName: 'li', text: `${book.name}, ${book.author}` });
+      rentedBooksWrap.append(li);
+    });
 
     cardNumberWrap.append(cardText);
     cardNumberWrap.append(cardNumber);

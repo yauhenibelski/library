@@ -78,9 +78,22 @@
   }
 }
 .rented-books-wrap {
-  width: 350px;
+  width: 400px;
   height: 120px;
-  background-color: aquamarine;
+  padding-left: 28px;
+  padding-top: 31px;
+  overflow: scroll;
+  // box-shadow: inset 0px 0px 38px -12px rgba(66, 68, 90, 0.21);
+
+  li {
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+  }
 }
 .card-number-wrap {
   display: flex;

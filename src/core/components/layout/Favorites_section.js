@@ -2,6 +2,7 @@ import createElement from '../../utils/createElement';
 import Component from '../template/component';
 import Headline from '../ui/Headline';
 import BooksContainer from '../ui/BooksContainer';
+import About from './About_section';
 
 class Favorites extends Component {
   constructor() {
@@ -17,6 +18,7 @@ class Favorites extends Component {
       Favorites.value = w.target.value;
       Array.from(BooksContainer.elem._container.children).forEach((elem) => elem.classList.toggle('book-active'));
       setTimeout(() => { BooksContainer.elem.render(); }, 100);
+      About.elem.render();
     };
 
     ['Winter', 'Spring', 'Summer', 'Autumn'].forEach((val) => {

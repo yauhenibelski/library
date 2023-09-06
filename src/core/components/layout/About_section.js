@@ -13,78 +13,87 @@ class About extends Component {
   constructor() {
     super('section', 'about');
     this._container.id = 'about';
-    About.currentSlideNum = window.innerWidth > 1024 ? 1 : 0;
+    About.elem = Object.assign(this);
   }
 
   imgs = [img1, img2, img3, img4, img5].map((src) => getImg(src));
 
-  _elem = {
-    text: createElement({
+  _createSection() {
+    const text = createElement({
       tagName: 'p', text: 'The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside',
-    }),
-    imageWrapper: createElement({ tagName: 'div', className: 'img-wrapper' }),
-    leftBtn: createElement({ tagName: 'button', className: 'leftBtn' }),
-    rightBtn: createElement({ tagName: 'button', className: 'rightBtn' }),
-    carouselContainer: createElement({ tagName: 'div', className: 'carousel-container' }),
-    carouselContainerWrap: createElement({ tagName: 'div', className: 'carousel-container-wrapper' }),
-    carouselPaginationWrap: createElement({ tagName: 'div', className: 'carousel-pagination-wrapper' }),
-    rangesBtn: this.imgs.map((_, i) => {
+    });
+    const imageWrapper = createElement({ tagName: 'div', className: 'img-wrapper' });
+    const leftBtn = createElement({ tagName: 'button', className: 'leftBtn' });
+    const rightBtn = createElement({ tagName: 'button', className: 'rightBtn' });
+    const carouselContainer = createElement({ tagName: 'div', className: 'carousel-container' });
+    const carouselContainerWrap = createElement({ tagName: 'div', className: 'carousel-container-wrapper' });
+    const carouselPaginationWrap = createElement({ tagName: 'div', className: 'carousel-pagination-wrapper' });
+    const rangesBtn = this.imgs.map((_, i) => {
       const range = createElement({ tagName: 'div', className: 'range' });
-
       range.onclick = () => {
-        changeSlide(i, this._elem.imageWrapper, range);
+        changeSlide(i, imageWrapper, range);
       };
       return range;
-    }),
-  };
-
-  _createSection() {
+    });
     this.imgs.forEach((img, i) => {
-      this._elem.imageWrapper.append(img);
-      this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
-      this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
+      imageWrapper.append(img);
+      rangesBtn[About.currentSlideNum].classList.toggle('active');
+      carouselPaginationWrap.append(rangesBtn[i]);
 
       // if (window.innerWidth > 1024 && (i !== 0 && i !== arr.length - 1)) {
-      //   this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
-      //   this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
+      //    rangesBtn[About.currentSlideNum].classList.toggle('active');
+      //    carouselPaginationWrap.append rangesBtn[i]);
       // }
       // if (window.innerWidth <= 1024) {
-      //   this._elem.rangesBtn[About.currentSlideNum].classList.toggle('active');
-      //   this._elem.carouselPaginationWrap.append(this._elem.rangesBtn[i]);
+      //    rangesBtn[About.currentSlideNum].classList.toggle('active');
+      //    carouselPaginationWrap.append rangesBtn[i]);
       // }
     });
 
     this._container.append(new Headline('About').render());
-    this._container.append(this._elem.text);
+    this._container.append(text);
 
-    this._elem.carouselContainer.append(this._elem.imageWrapper);
+    carouselContainer.append(imageWrapper);
 
-    this._elem.carouselContainerWrap.append(this._elem.leftBtn);
-    this._elem.carouselContainerWrap.append(this._elem.carouselContainer);
-    this._elem.carouselContainerWrap.append(this._elem.rightBtn);
+    carouselContainerWrap.append(leftBtn);
+    carouselContainerWrap.append(carouselContainer);
+    carouselContainerWrap.append(rightBtn);
 
-    this._container.append(this._elem.carouselContainerWrap);
-    this._container.append(this._elem.carouselPaginationWrap);
+    this._container.append(carouselContainerWrap);
+    this._container.append(carouselPaginationWrap);
 
-    this._elem.leftBtn.onclick = () => {
+    leftBtn.onclick = () => {
       const slideNum = About.currentSlideNum - 1;
       if ((slideNum >= 0 && window.innerWidth < 1024) || slideNum > 0) {
-        changeSlide(slideNum, this._elem.imageWrapper, this._elem.rangesBtn[slideNum]);
+        changeSlide(slideNum, imageWrapper, rangesBtn[slideNum]);
       }
     };
-    this._elem.rightBtn.onclick = () => {
+    rightBtn.onclick = () => {
       const slideNum = About.currentSlideNum + 1;
       if (
         (slideNum <= this.imgs.length - 1 && window.innerWidth < 1024)
         || slideNum < this.imgs.length - 1
       ) {
-        changeSlide(slideNum, this._elem.imageWrapper, this._elem.rangesBtn[slideNum]);
+        changeSlide(slideNum, imageWrapper, rangesBtn[slideNum]);
       }
     };
   }
 
   render() {
+    About.currentSlideNum = window.innerWidth > 1024 ? 1 : 0;
+    this._container.innerHTML = '';
     this._createSection();
+
+    window.onresize = (e) => {
+      const width = e.currentTarget.innerWidth;
+
+      setTimeout(() => {
+        if (width === window.innerWidth) {
+          this.render();
+          console.log('1');
+        }
+      }, 100);
+    };
 
     return this._container;
   }

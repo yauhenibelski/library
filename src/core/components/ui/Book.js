@@ -26,7 +26,7 @@ class Book extends Component {
     }
 
     btn.onclick = () => {
-      if (App.user.cardNumber) Popup.run(new BuyLibraryCard(this._book).render());
+      if (App.user.cardNumber) Popup.run(new BuyLibraryCard(this._book).render(), 'white');
       else Popup.run(new ModalLogin('login').render());
     };
 
