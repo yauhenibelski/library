@@ -5,6 +5,7 @@ import Component from '../template/component';
 import UserInfoContainer from './UserInfoContainer';
 import iconCopy from '../../../assets/img/icon_copy.svg';
 import getBookByID from '../../utils/getBookByID';
+import ClipboardJS from 'clipboard';
 
 class ModalProfile extends Component {
   constructor() {
@@ -27,6 +28,11 @@ class ModalProfile extends Component {
     const cardText = createElement({ tagName: 'p', text: 'Card number' });
     const cardNumber = createElement({ tagName: 'p', text: `${App.user.cardNumber}` });
     const copyIcon = getImg(iconCopy);
+
+    copyIcon.onclick = () => {
+      ClipboardJS.copy(cardNumber.innerText);
+      alert('Card number copied to clipboard');
+    };
 
     App.user.books.forEach((bookId) => {
       const book = getBookByID(bookId);

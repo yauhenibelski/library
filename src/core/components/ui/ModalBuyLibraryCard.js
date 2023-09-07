@@ -106,8 +106,11 @@ class BuyLibraryCard extends Component {
     const inputs = this._container.getElementsByTagName('input');
 
     inputsContainer.oninput = () => {
+      console.log('2');
       if ([...inputs].every((element) => element.validity.valid)) {
         buyBtn.disabled = false;
+      } else {
+        buyBtn.disabled = true;
       }
     };
 

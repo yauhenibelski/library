@@ -88,10 +88,7 @@ class About extends Component {
       const width = e.currentTarget.innerWidth;
 
       setTimeout(() => {
-        if (width === window.innerWidth) {
-          this.render();
-          console.log('1');
-        }
+        if (width === window.innerWidth) this.render();
       }, 100);
     };
 
